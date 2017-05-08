@@ -68,7 +68,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         for (GeoJsonFeature feature : layer.getFeatures())
         {
 
-                Bitmap pit_im = BitmapFactory.decodeResource(getResources(), R.drawable.pit);
+                Bitmap pit_im = BitmapFactory.decodeResource(getResources(), R.drawable.telstra_pit);
                 GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
                 pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(pit_im));
                 pointStyle.setTitle("Pit : " + feature.getProperty("ID"));

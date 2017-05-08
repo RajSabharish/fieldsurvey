@@ -17,11 +17,13 @@
 package com.google.maps.android.utils.demo;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -52,6 +54,10 @@ public abstract class BaseDemoActivity extends FragmentActivity implements OnMap
     Location mLastLocation;
     Marker mCurrLocationMarker;
 
+    private ProgressDialog progressDialog;
+    private Thread thread;
+    private Handler handler;
+
 
     protected int getLayoutId() {
         return R.layout.map;
@@ -62,6 +68,7 @@ public abstract class BaseDemoActivity extends FragmentActivity implements OnMap
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         setUpMap();
+
     }
 
     @Override

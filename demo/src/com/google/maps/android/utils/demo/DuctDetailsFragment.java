@@ -60,7 +60,6 @@ public class DuctDetailsFragment extends Fragment{
     }
 
     public void updateDetailsView(int position) {
-        System.out.println(position + "!!!!!!!!!!!!!!!!!!!");
 
         ownerSpinner = (Spinner)getActivity().findViewById(R.id.ownerSpinner);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(),
@@ -90,7 +89,7 @@ public class DuctDetailsFragment extends Fragment{
             ownerSpinner.setSelection(0);
         }
 
-        Button uploadButton = (Button) getActivity().findViewById(R.id.button2);
+        Button uploadButton = (Button) getActivity().findViewById(R.id.nextButton);
         uploadButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

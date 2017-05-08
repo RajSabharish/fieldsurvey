@@ -12,5 +12,6 @@
     <string name="title_activity_capture_image">CaptureImageActivity</string>
     <string name="title_activity_video">Demo Video</string>
     <string name="title_activity_trench_survey">DuctDetails</string>
+    <string name="title_activity_splash">splash</string>
 
 </resources>
