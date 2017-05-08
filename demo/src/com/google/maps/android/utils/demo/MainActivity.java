@@ -19,24 +19,89 @@ package com.google.maps.android.utils.demo;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
     private ViewGroup mListView;
     EditText SamCode;
+    private boolean nodeclickstate=false;
+    private boolean ugclickstate=false;
+    private boolean eqpclickstate=false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        final Drawable str_on = ContextCompat.getDrawable(this,R.drawable.btn_star_big_on);
+        final Drawable str_off = ContextCompat.getDrawable(this,R.drawable.btn_star_big_off);
+
+        final ImageButton nodebutton = (ImageButton) findViewById(R.id.nodeimageButton);
+        final ImageButton ugbutton = (ImageButton) findViewById(R.id.ugimageButton);
+        final ImageButton eqpbutton = (ImageButton) findViewById(R.id.eqpimageButton);
+        nodebutton.setImageDrawable(str_off);
+        ugbutton.setImageDrawable(str_off);
+        eqpbutton.setImageDrawable(str_off);
+
+        nodebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nodeclickstate=!nodeclickstate;
+                if(nodeclickstate==true)
+                {
+                    nodebutton.setImageDrawable(str_on);
+                }
+                else {
+                    nodebutton.setImageDrawable(str_off);
+                }
+            }
+        });
+
+
+
+        ugbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ugclickstate=!ugclickstate;
+                if(ugclickstate==true)
+                {
+                    ugbutton.setImageDrawable(str_on);
+                }
+                else {
+                    ugbutton.setImageDrawable(str_off);
+                }
+            }
+        });
+
+
+
+        eqpbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eqpclickstate=!eqpclickstate;
+                if(eqpclickstate==true)
+                {
+                    eqpbutton.setImageDrawable(str_on);
+                }
+                else {
+                    eqpbutton.setImageDrawable(str_off);
+                }
+            }
+        });
 
         Button SurveyButton = (Button) this.findViewById(R.id.button1);
         SamCode = (EditText)findViewById(R.id.editText);
+
         SurveyButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -56,6 +121,7 @@ public class MainActivity extends Activity {
 
             }
         });
+
     }
 
         /*mListView = (ViewGroup) findViewById(R.id.list);
