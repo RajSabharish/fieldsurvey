@@ -1,9 +1,11 @@
 package com.google.maps.android.utils.demo;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.data.Feature;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
@@ -182,7 +184,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
             @Override
             public void onFeatureClick(Feature feature)
             {
-                Toast.makeText(GeoJsonDemoActivity.this, "Feature clicked: " + feature.getProperty("ID"), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(GeoJsonDemoActivity.this, "Feature clicked: " + feature.getProperty("ID"), Toast.LENGTH_SHORT).show();
                 highlightselected(feature.getProperty("ID"), layer);
                 inspect_id = feature.getProperty("ID");
                 if (feature.hasProperty("TLS_ID_ROUTE"))
@@ -197,6 +199,12 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
             }
 
         );
+        getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Toast.makeText(GeoJsonDemoActivity.this,"Test!!!!!!!!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
