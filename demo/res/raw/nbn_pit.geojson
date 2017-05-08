@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4140" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "NETWORK_KEY": null, "ID": "3KGP-01-01-NEC-001", "TYPE": "Plinth", "MATERIAL": "-", "SIZE": "-", "SPACE_OCCUPANCY": "N\/A", "REMEDIATE_TO": null, "OHS_PIT": null, "SURFACE_TYPE": "Grass", "OWNER": "NBNCO", "OBJECT_STATUS": "PLANNED", "ROTATION": 0.000000 }, "geometry": { "type": "Point", "coordinates": [ 144.79864884, -37.74499146 ] } },
+{ "type": "Feature", "properties": { "NETWORK_KEY": null, "ID": "3KGP-01-02-NEC-001", "TYPE": "Plinth", "MATERIAL": "-", "SIZE": "-", "SPACE_OCCUPANCY": "N\/A", "REMEDIATE_TO": null, "OHS_PIT": null, "SURFACE_TYPE": "Grass", "OWNER": "NBNCO", "OBJECT_STATUS": "PLANNED", "ROTATION": 0.000000 }, "geometry": { "type": "Point", "coordinates": [ 144.79643286, -37.7435709 ] } },
+{ "type": "Feature", "properties": { "NETWORK_KEY": null, "ID": "3KGP-01-02-PIT-002", "TYPE": "Pit", "MATERIAL": "P (Thermoplastic)", "SIZE": "8", "SPACE_OCCUPANCY": "N\/A", "REMEDIATE_TO": null, "OHS_PIT": null, "SURFACE_TYPE": "Grass", "OWNER": "NBNCO", "OBJECT_STATUS": "PLANNED", "ROTATION": 0.000000 }, "geometry": { "type": "Point", "coordinates": [ 144.79630146, -37.74370977 ] } }
+]
+}
