@@ -10,12 +10,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -25,16 +29,10 @@ import android.widget.TextView;
 public class DuctDetailsFragment extends Fragment{
     final static String ARG_POSITION = "position";
     int mCurrentPosition = -1;
-    private Spinner ownerSpinner;
+    private Spinner ownerSpinner,cableSpinner;
     private static final String[]owners = {"NBN", "TELSTRA"};
-    private static final int CAMERA_REQUEST1 = 1666;
-    private static final int CAMERA_REQUEST2 = 1777;
-    private static final int CAMERA_REQUEST3 = 1888;
-    private static final int CAMERA_REQUEST4 = 1999;
-    ImageView img1;
-    ImageView img2;
-    ImageView img3;
-    ImageView img4;
+    int cableloc = 0;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,6 +64,7 @@ public class DuctDetailsFragment extends Fragment{
                 android.R.layout.simple_spinner_item,owners);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ownerSpinner.setAdapter(adapter);
+
         int temp=position * 8;
         EditText ductIdText = (EditText) getActivity().findViewById(R.id.ductIdText);
         EditText ductLengthText = (EditText) getActivity().findViewById(R.id.ductLengthText);
@@ -74,6 +73,8 @@ public class DuctDetailsFragment extends Fragment{
         EditText ductCapacityText = (EditText) getActivity().findViewById(R.id.ductCapacityText);
         EditText maxMandrelText = (EditText) getActivity().findViewById(R.id.maxMandrelText);
         EditText matrixCodeText = (EditText) getActivity().findViewById(R.id.matrixCodeText);
+        final EditText cableTypeText = (EditText) getActivity().findViewById(R.id.cableTypeText);
+        cableTypeText.setKeyListener(null);
         ductIdText.setText(Ipsum.DuctId.get(position));
         ductIdText.setKeyListener(null);
         ductLengthText.setText(Ipsum.Details.get(temp));
@@ -87,7 +88,46 @@ public class DuctDetailsFragment extends Fragment{
         } else
         {
             ownerSpinner.setSelection(0);
+
         }
+        int cablepos = position;
+
+
+        for(int i=0;i<cablepos;i++){
+            cableloc=((Integer.parseInt(Ipsum.CableCount.get(i)))*2)+cableloc;
+        }
+        final List<String> tmplist=new ArrayList<String>();
+        tmplist.clear();
+        int cap=cableloc+(Integer.parseInt(Ipsum.CableCount.get(cablepos))*2);
+        for(int i=cableloc;i<cap;i=i+2){
+            tmplist.add(Ipsum.CableIDs.get(i));
+        }
+
+        cableSpinner = (Spinner)getActivity().findViewById(R.id.proposedCableIDSpinner);
+        ArrayAdapter<String> adp= new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,tmplist);
+        adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cableSpinner.setAdapter(adp);
+
+        cableSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                int displaycable=cableSpinner.getSelectedItemPosition();
+                cableTypeText.setText(Ipsum.CableIDs.get(cableloc+(displaycable*2)+1));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        for(int i=0;i<Ipsum.DuctId.size();i++){
+            System.out.println(Ipsum.DuctId.get(i));
+        }
+
+
+
+
+
 
         Button uploadButton = (Button) getActivity().findViewById(R.id.nextButton);
         uploadButton.setOnClickListener(new View.OnClickListener() {

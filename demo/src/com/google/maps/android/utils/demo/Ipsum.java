@@ -10,8 +10,8 @@ import java.util.List;
 public class Ipsum {
 
     static List<String> DuctId = new ArrayList<String>();
-
-
+    static List<String> CableCount = new ArrayList<String>();
     static List<String> Details = new ArrayList<String>();
+    static List<String> CableIDs = new ArrayList<String>();
 }
 
