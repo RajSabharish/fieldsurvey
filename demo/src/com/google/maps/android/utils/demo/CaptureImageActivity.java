@@ -54,7 +54,7 @@ public class CaptureImageActivity extends Activity {
             switch (which)
             {
                 case DialogInterface.BUTTON_POSITIVE:
-                    startActivity(new Intent(getApplicationContext(), VideoActivity.class));
+                  //  startActivity(new Intent(getApplicationContext(), VideoActivity.class));
                     break;
 
             }

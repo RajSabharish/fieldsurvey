@@ -50,9 +50,6 @@
             android:name=".CaptureImageActivity"
             android:label="@string/title_activity_capture_image" />
         <activity
-            android:name=".VideoActivity"
-            android:label="@string/title_activity_video" />
-        <activity
             android:name=".TrenchSurveyActivity"
             android:label="@string/title_activity_trench_survey" />
         <activity

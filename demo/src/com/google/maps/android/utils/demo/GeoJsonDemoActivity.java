@@ -232,6 +232,18 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         }
     };
 
+    DialogInterface.OnClickListener pit_dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    break;
+            }
+        }
+    };
+
     public boolean searchductid(String id){
         for (int i=0;i<Ipsum.DuctId.size();i++){
             if(Ipsum.DuctId.get(i).equals(id)){
@@ -276,6 +288,8 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
             @Override
             public void onInfoWindowClick(Marker marker) {
                 Toast.makeText(GeoJsonDemoActivity.this,String.valueOf(marker.getPosition())+ String.valueOf(marker.getSnippet()),Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(GeoJsonDemoActivity.this);
+                builder.setMessage("Do you want to survey this Pit").setPositiveButton("Yes", pit_dialogClickListener).setNegativeButton("No", pit_dialogClickListener).show();
 
             }
         });

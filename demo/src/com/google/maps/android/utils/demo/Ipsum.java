@@ -13,5 +13,6 @@ public class Ipsum {
     static List<String> CableCount = new ArrayList<String>();
     static List<String> Details = new ArrayList<String>();
     static List<String> CableIDs = new ArrayList<String>();
+    static List<String> PitId = new ArrayList<String>();
 }
 
