@@ -1,5 +1,6 @@
 package com.google.maps.android.utils.demo;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -108,6 +109,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
                 pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(pit_im));
                 pointStyle.setTitle("Pit");
                 pointStyle.setSnippet(feature.getProperty("ID"));
+
                 feature.setPointStyle(pointStyle);
 
         }
@@ -198,13 +200,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
 
                             }
                         }
-                        for(int i=0;i<Ipsum.CableCount.size();i++){
-                            System.out.println("---"+Ipsum.CableCount.get(i));
-                        }
 
-                        for(int i=0;i<Ipsum.CableIDs.size();i++){
-                            System.out.println("+++"+Ipsum.CableIDs.get(i));
-                        }
 
                         if (flag==1) {
 
@@ -261,7 +257,9 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         addColorsToTrenches(layer);
         addColorsToMarkers(layer);
         layer.addLayerToMap();
-        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-37.74499146, 144.79864884),15));
+        LatLng initial_coordinate = new LatLng(-37.74499146, 144.79864884);
+        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,15);
+        getMap().animateCamera(initial_location);
         layer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
 
             @Override
@@ -272,6 +270,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
                     highlightselected(feature.getProperty("TRENCH_ID"), layer);
                 }
                 inspect_id = feature.getProperty("TRENCH_ID");
+
                 if (feature.hasProperty("TRENCH_ID"))
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(GeoJsonDemoActivity.this);

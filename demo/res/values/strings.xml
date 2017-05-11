@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Field Survey</string>
+    <string name="app_name">Field Assistant</string>
     <string name="input_text">Looking for...</string>
     <string name="button_send">Go!</string>
-    <string name="geojson_url">https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson</string>
     <string name="remove">Remove</string>
     <string name="add">Add</string>
     <string name="photo">Capture Image</string>

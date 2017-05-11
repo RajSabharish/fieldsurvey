@@ -19,11 +19,8 @@
 
         <FrameLayout
             android:id="@+id/frameLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="105dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_width="356dp"
+            android:layout_height="103dp"
             android:background="@drawable/bluegradient"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -43,7 +40,9 @@
                     app:layout_constraintBaseline_toBaselineOf="@+id/textView22"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toRightOf="@+id/textView22"
-                    app:layout_constraintRight_toRightOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp" />
 
                 <TextView
                     android:id="@+id/textView22"
@@ -51,8 +50,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:text="Node Survey"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
-                    app:layout_constraintLeft_toRightOf="@+id/textView21" />
+                    app:layout_constraintLeft_toRightOf="@+id/textView21"
+                    android:layout_marginStart="35dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textView21" />
 
                 <TextView
                     android:id="@+id/textView21"
@@ -65,19 +65,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/ugimageButton"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1.0"
+                    android:layout_marginStart="33dp" />
 
                 <ImageButton
                     android:id="@+id/eqpimageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="40dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="24dp"
+                    android:layout_marginRight="40dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintHorizontal_bias="0.937"
-                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/btn_star_big_off" />
@@ -91,11 +89,11 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintHorizontal_bias="0.064"
+                    app:layout_constraintHorizontal_bias="0.311"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/btn_star_big_off" />
+                    app:srcCompat="@drawable/btn_star_big_off"
+                    app:layout_constraintRight_toLeftOf="@+id/nodeimageButton" />
 
                 <ImageButton
                     android:id="@+id/nodeimageButton"
@@ -103,10 +101,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="75dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="75dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintHorizontal_bias="0.66"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/eqpimageButton"
                     app:layout_constraintTop_toTopOf="parent"
@@ -130,11 +128,27 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="151dp"
+            android:layout_height="251dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.929"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:srcCompat="@drawable/acc_green_logo_black" />
+
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="40dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -148,7 +162,7 @@
             android:id="@+id/editText"
             android:layout_width="145dp"
             android:layout_height="41dp"
-            android:layout_marginLeft="29dp"
+            android:layout_marginLeft="35dp"
             android:layout_marginStart="35dp"
             android:ems="10"
             android:hint="eg. 3SAM-01"
@@ -156,6 +170,8 @@
             android:textAppearance="@style/amu_Bubble.TextAppearance.Light"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView"
             app:layout_constraintLeft_toRightOf="@+id/textView" />
+
+
 
     </android.support.constraint.ConstraintLayout>
 
