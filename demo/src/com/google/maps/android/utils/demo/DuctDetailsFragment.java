@@ -137,7 +137,7 @@ public class DuctDetailsFragment extends Fragment{
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                 alert.setTitle("Save");
                 alert.setMessage("Are you sure to proceed?");
-                alert.setPositiveButton("OK",dialogClickListener);
+                alert.setPositiveButton("YES",dialogClickListener);
                 alert.setNegativeButton("NO",dialogClickListener);
                 alert.show();
 
