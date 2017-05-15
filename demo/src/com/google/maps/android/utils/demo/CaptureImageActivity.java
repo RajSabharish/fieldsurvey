@@ -20,7 +20,7 @@ public class CaptureImageActivity extends Activity {
         setContentView(R.layout.activity_capture_image);
 
         this.imageView = (ImageView)this.findViewById(R.id.imageView1);
-        Button photoButton = (Button) this.findViewById(R.id.button1);
+        Button photoButton = (Button) this.findViewById(R.id.ugbutton);
         photoButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -30,7 +30,7 @@ public class CaptureImageActivity extends Activity {
             }
         });
 
-        Button uploadButton = (Button) this.findViewById(R.id.button2);
+        Button uploadButton = (Button) this.findViewById(R.id.nodebutton);
         uploadButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

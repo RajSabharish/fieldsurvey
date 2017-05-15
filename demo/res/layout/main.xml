@@ -1,180 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:baselineAligned="false"
-    android:clickable="false"
-    android:orientation="vertical"
-    android:weightSum="1"
-    tools:clickable="false"
-    android:background="@drawable/mainblue">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="fixed"
+            app:tabGravity="fill"/>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.03">
-
-        <FrameLayout
-            android:id="@+id/frameLayout2"
-            android:layout_width="356dp"
-            android:layout_height="103dp"
-            android:background="@drawable/bluegradient"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="Equipment Survey"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/textView22"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintLeft_toRightOf="@+id/textView22"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp" />
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:text="Node Survey"
-                    app:layout_constraintLeft_toRightOf="@+id/textView21"
-                    android:layout_marginStart="35dp"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/textView21" />
-
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="33dp"
-                    android:layout_marginTop="8dp"
-                    android:text="UG Survey"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ugimageButton"
-                    app:layout_constraintVertical_bias="1.0"
-                    android:layout_marginStart="33dp" />
-
-                <ImageButton
-                    android:id="@+id/eqpimageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/btn_star_big_off" />
-
-                <ImageButton
-                    android:id="@+id/ugimageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintHorizontal_bias="0.311"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/btn_star_big_off"
-                    app:layout_constraintRight_toLeftOf="@+id/nodeimageButton" />
-
-                <ImageButton
-                    android:id="@+id/nodeimageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="75dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="75dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/eqpimageButton"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/btn_star_big_off" />
-
-            </android.support.constraint.ConstraintLayout>
-
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="145dp"
-            android:layout_height="41dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="207dp"
-            android:layout_weight="0.03"
-            android:clickable="false"
-            android:contextClickable="false"
-            android:text="Enter SAM code"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="175dp"
-            android:layout_height="178dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:layout_constraintVertical_bias="0.303"
-            android:src="@drawable/acc_green_logo_resized" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Survey Area"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="145dp"
-            android:layout_height="41dp"
-            android:layout_marginLeft="35dp"
-            android:layout_marginStart="35dp"
-            android:ems="10"
-            android:hint="eg. 3SAM-01"
-            android:inputType="textPersonName"
-            android:textAppearance="@style/amu_Bubble.TextAppearance.Light"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView"
-            app:layout_constraintLeft_toRightOf="@+id/textView" />
-
-
-
-    </android.support.constraint.ConstraintLayout>
-
-</LinearLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+</android.support.design.widget.CoordinatorLayout>

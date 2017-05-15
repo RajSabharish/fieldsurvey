@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Field Assistant</string>
+    <string name="app_name">INFA</string>
     <string name="input_text">Looking for...</string>
     <string name="button_send">Go!</string>
     <string name="remove">Remove</string>
@@ -12,5 +12,9 @@
     <string name="title_activity_video">Demo Video</string>
     <string name="title_activity_trench_survey">DuctDetails</string>
     <string name="title_activity_splash">splash</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

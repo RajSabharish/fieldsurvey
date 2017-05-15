@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+
 public class GeoJsonDemoActivity extends BaseDemoActivity {
 
     private final static String mLogTag = "GeoJsonDemo";
@@ -104,7 +105,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         for (GeoJsonFeature feature : layer.getFeatures())
         {
 
-                Bitmap pit_im = BitmapFactory.decodeResource(getResources(), R.drawable.telstra_pit);
+                Bitmap pit_im = BitmapFactory.decodeResource(getResources(), R.drawable.pit);
                 GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
                 pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(pit_im));
                 pointStyle.setTitle("Pit");
@@ -233,6 +234,16 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         public void onClick(DialogInterface dialog, int which) {
             switch (which) {
                 case DialogInterface.BUTTON_POSITIVE:
+                    try {
+                        GeoJsonLayer layer_eq_pit = new GeoJsonLayer(getMap(), R.raw.equipmentandpit, getApplicationContext());
+                        GeoJsonLayer layer_eq = new GeoJsonLayer(getMap(), R.raw.equipment, getApplicationContext());
+
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
                     break;

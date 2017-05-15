@@ -1,0 +1,8 @@
+{"name":"Equipment","type":"FeatureCollection"
+,"crs":{"type":"name","properties":{"name":"EPSG:4283"}}
+,"features":[
+{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79875594,-37.74403296]},"properties":{"TYPE":"D_CORNING_288-ORS-MB","PLACEMENT_TYPE":"UG","Equipment_ID":"3KGP-01-00-DJL-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79936596,-37.74274101]},"properties":{"PLACEMENT_TYPE":"OT","Equipment_ID":"3KGP-01-00-ODF-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79630146,-37.74370977]},"properties":{"TYPE":"CORNING_MPT_B4PORT","PLACEMENT_TYPE":"UG","Equipment_ID":"3KGP-01-02-MPT-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79853904,-37.74498903]},"properties":{"TYPE":"CORNING_MPT_B4PORT","PLACEMENT_TYPE":"UG","Equipment_ID":"3KGP-01-01-MPT-001","OBJECT_STATUS":"PLANNED"}}
+]}

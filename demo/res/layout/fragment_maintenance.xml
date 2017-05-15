@@ -1,13 +1,82 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.google.maps.android.utils.demo.MaintenanceFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/eqpupkeepbutton"
+            android:layout_width="154dp"
+            android:layout_height="56dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="44dp"
+            android:text="Equipment Upkeep"
+            android:theme="@style/MyButton"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/faultremediationbutton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/faultremediationbutton"
+            android:layout_width="154dp"
+            android:layout_height="56dp"
+            android:layout_alignStart="@+id/eqpupkeepbutton"
+            android:layout_below="@+id/eqpupkeepbutton"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="44dp"
+            android:text="Fault Remediation"
+            android:theme="@style/MyButton"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="124dp"
+            android:text="SAM Code"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/maintenance_samcodetext"
+            app:layout_constraintTop_toBottomOf="@+id/eqpupkeepbutton" />
+
+        <EditText
+            android:id="@+id/maintenance_samcodetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:ems="10"
+            android:hint="e.g. 3SAM-20"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/maintenance_submitbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/maintenance_samcodetext"
+            app:layout_constraintVertical_bias="0.357" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</RelativeLayout>
