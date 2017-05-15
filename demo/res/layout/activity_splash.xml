@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000" >
+    android:background="@drawable/whitegradient">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,29 +12,48 @@
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="208dp"
-            android:layout_height="270dp"
+            android:layout_width="68dp"
+            android:layout_height="64dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="48dp"
             android:layout_marginTop="32dp"
             android:src="@drawable/acc_green_logo_black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteY="203dp" />
-    </android.support.constraint.ConstraintLayout>
+            app:layout_constraintVertical_bias="0.98"
+            android:layout_marginEnd="8dp" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="12dp"
-        android:textColor="#FFFFFF"
-        android:gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:text="©Accenture Technology" />
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:text="©Accenture Technology"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            app:layout_constraintRight_toLeftOf="@+id/imgLogo"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.784"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="43dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="268dp"
+            android:layout_height="268dp"
+            android:src="@drawable/infalogo"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView21" />
+    </android.support.constraint.ConstraintLayout>
 
 </RelativeLayout>
