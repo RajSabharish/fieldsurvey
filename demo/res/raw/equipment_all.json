@@ -1,0 +1,25 @@
+{"name":"Equipment_All","type":"FeatureCollection"
+,"crs":{"type":"name","properties":{"name":"EPSG:4283"}}
+,"features":[
+{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79875594,-37.74403296]},"properties":{"TYPE":"D_CORNING_288-ORS-MB","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-00-DJL-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79936596,-37.74274101]},"properties":{"TYPE":"Fiber Access Node","PLACEMENT_TYPE":"OT","EQUIPMENT_ID":"3KGP-01-00-ODF-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79630146,-37.74370977]},"properties":{"TYPE":"CORNING_MPT_B4PORT","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-MPT-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79853904,-37.74498903]},"properties":{"TYPE":"CORNING_MPT_B4PORT","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-01-MPT-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79847514,-37.74496014]},"properties":{"TYPE":"RCD","PLACEMENT_TYPE":"AR","EQUIPMENT_ID":"3KGP-01-01-RCD-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79640082,-37.74355641]},"properties":{"TYPE":"RCD","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-RCD-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79643286,-37.7435709]},"properties":{"TYPE":"ISAM_384","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-FNO-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79864884,-37.74499146]},"properties":{"TYPE":"ISAM_384","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-01-FNO-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79847514,-37.74496014]},"properties":{"TYPE":"Fuse","PLACEMENT_TYPE":"AR","EQUIPMENT_ID":"3KGP-01-01-FUS-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79633296,-37.74363903]},"properties":{"TYPE":"Fuse","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-FUS-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79864884,-37.74499146]},"properties":{"TYPE":"EBR","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-01-EBR-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79864614,-37.74501027]},"properties":{"TYPE":"EBR","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-01-EBR-002","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79643286,-37.7435709]},"properties":{"TYPE":"EBR","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-EBR-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79640082,-37.74355641]},"properties":{"TYPE":"EBR","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-EBR-002","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79933896,-37.74482496]},"properties":{"TYPE":"CU_OS_OJ_EXTRA_LARGE","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-01-CJL-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79933896,-37.74482496]},"properties":{"TYPE":"CU_OS_OJ_EXTRA_LARGE","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-01-CJL-002","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79933896,-37.74482496]},"properties":{"TYPE":"CU_OS_OJ_EXTRA_LARGE","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-01-CJL-003","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79622694,-37.74374802]},"properties":{"TYPE":"CU_OS_OJ_EXTRA_LARGE","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-CJL-001","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79622694,-37.74374802]},"properties":{"TYPE":"CU_OS_OJ_EXTRA_LARGE","PLACEMENT_TYPE":"UG","EQUIPMENT_ID":"3KGP-01-02-CJL-002","OBJECT_STATUS":"PLANNED"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79614594,-37.743678]},"properties":{"TYPE":"Pillar","EQUIPMENT_ID":"000000004221305825","SIZE":"1800","OBJECT_STATUS":"INSERVICE","EXCHANGE_ID":"SALB P24"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79921494,-37.74485502]},"properties":{"TYPE":"Pillar","EQUIPMENT_ID":"000000004221325189","SIZE":"900","OBJECT_STATUS":"INSERVICE","EXCHANGE_ID":"SALB P25"}}
+]}
