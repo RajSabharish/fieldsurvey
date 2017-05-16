@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.google.maps.android.utils.demo.MaintenanceFragment">
+    tools:context="com.google.maps.android.utils.demo.MaintenanceFragment"
+    android:background="@drawable/bluegradient">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,6 +16,7 @@
             android:layout_height="56dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:fontFamily="serif-monospace"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="44dp"
@@ -29,6 +31,7 @@
             android:id="@+id/faultremediationbutton"
             android:layout_width="154dp"
             android:layout_height="56dp"
+            android:fontFamily="serif-monospace"
             android:layout_alignStart="@+id/eqpupkeepbutton"
             android:layout_below="@+id/eqpupkeepbutton"
             android:layout_marginRight="8dp"
@@ -44,16 +47,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="124dp"
+            android:fontFamily="serif-monospace"
+            android:layout_marginTop="86dp"
             android:text="SAM Code"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/maintenance_samcodetext"
-            app:layout_constraintTop_toBottomOf="@+id/eqpupkeepbutton" />
+            app:layout_constraintTop_toBottomOf="@+id/eqpupkeepbutton"
+            app:layout_constraintHorizontal_bias="0.47" />
 
         <EditText
             android:id="@+id/maintenance_samcodetext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
             android:layout_marginRight="8dp"
             android:ems="10"
             android:hint="e.g. 3SAM-20"
@@ -67,14 +73,28 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
+            android:fontFamily="serif-monospace"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:text="Submit"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/maintenance_samcodetext"
-            app:layout_constraintVertical_bias="0.357" />
+            app:layout_constraintVertical_bias="0.645"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="93dp"
+            android:layout_height="93dp"
+            app:srcCompat="@drawable/infalogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="46dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.962" />
 
     </android.support.constraint.ConstraintLayout>
 

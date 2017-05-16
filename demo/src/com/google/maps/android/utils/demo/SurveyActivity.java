@@ -3,11 +3,9 @@ package com.google.maps.android.utils.demo;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.data.Feature;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
@@ -15,7 +13,6 @@ import com.google.maps.android.data.geojson.GeoJsonLineStringStyle;
 import com.google.maps.android.data.geojson.GeoJsonPointStyle;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -23,27 +20,30 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.provider.Settings;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 
-public class GeoJsonDemoActivity extends BaseDemoActivity {
+public class SurveyActivity extends BaseDemoActivity {
 
     private final static String mLogTag = "GeoJsonDemo";
     public static String inspect_id;
     public static List<String> pit_ids = new ArrayList<String>();
+    public static Boolean copper_eqp_state, fiber_eqp_state, ug_state;
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+        copper_eqp_state =extras.getBoolean("copperstate");
+        fiber_eqp_state =extras.getBoolean("fiberstate");
+        ug_state=extras.getBoolean("ugstate");
+
+    }
 
     protected int getLayoutId() {
         return R.layout.geojson_demo;
@@ -63,20 +63,42 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         try {
             GeoJsonLayer layer_tls_trench = new GeoJsonLayer(getMap(), R.raw.cable_duct_trench, this);
             GeoJsonLayer layer_temp_pit = new GeoJsonLayer(getMap(),R.raw.pit,this);
-            for (GeoJsonFeature feature : layer_tls_trench.getFeatures()) {
-                start_node_tmp=feature.getProperty("START_NODE_ID");
-                end_node_tmp=feature.getProperty("END_NODE_ID");
-                addtolist(start_node_tmp);
-                addtolist(end_node_tmp);
-            }
-            for (GeoJsonFeature feature:layer_temp_pit.getFeatures()){
-                for (int i=0;i<pit_ids.size();i++){
-                    if(feature.getProperty("ID").equals(pit_ids.get(i))){
-                        layer_tls_trench.addFeature(feature);
+            GeoJsonLayer layer_eqp_pit = new GeoJsonLayer(getMap(), R.raw.equipmentandpit, this);
+            GeoJsonLayer layer_temp = new GeoJsonLayer(getMap(), R.raw.temp, this);
+
+            if (ug_state==true){
+                for (GeoJsonFeature feature : layer_tls_trench.getFeatures()) {
+                    start_node_tmp=feature.getProperty("START_NODE_ID");
+                    end_node_tmp=feature.getProperty("END_NODE_ID");
+                    addtolist(start_node_tmp);
+                    addtolist(end_node_tmp);
+                    layer_temp.addFeature(feature);
+                }
+                for (GeoJsonFeature feature:layer_temp_pit.getFeatures()){
+                    for (int i=0;i<pit_ids.size();i++){
+                        if(feature.getProperty("ID").equals(pit_ids.get(i))){
+                            layer_temp.addFeature(feature);
+                        }
                     }
                 }
             }
-            addGeoJsonLayerToMap(layer_tls_trench);
+            if (copper_eqp_state ==true) {
+                for (GeoJsonFeature feature : layer_eqp_pit.getFeatures()) {
+                    String eqp_id = feature.getProperty("EQUIPMENT_ID");
+                    if (eqp_id.contains("CJL")) {
+                        layer_temp.addFeature(feature);
+                    }
+                }
+            }
+            if (fiber_eqp_state==true){
+                for (GeoJsonFeature feature : layer_eqp_pit.getFeatures()) {
+                    String eqp_id = feature.getProperty("EQUIPMENT_ID");
+                    if (eqp_id.contains("FNO")||eqp_id.contains("DJL")||eqp_id.contains("MPT")||eqp_id.contains("EBR")||eqp_id.contains("ODF")) {
+                        layer_temp.addFeature(feature);
+                    }
+                }
+            }
+            addGeoJsonLayerToMap(layer_temp);
 
 
         } catch (IOException e) {
@@ -105,13 +127,50 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         for (GeoJsonFeature feature : layer.getFeatures())
         {
 
-                Bitmap pit_im = BitmapFactory.decodeResource(getResources(), R.drawable.pit);
-                GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
+            Bitmap pit_im = BitmapFactory.decodeResource(getResources(), R.drawable.pit);
+            Bitmap ebr_im = BitmapFactory.decodeResource(getResources(), R.drawable.ebr);
+            Bitmap fno_im = BitmapFactory.decodeResource(getResources(), R.drawable.fno);
+            Bitmap mpt_im = BitmapFactory.decodeResource(getResources(), R.drawable.mpt);
+            Bitmap cjl_im = BitmapFactory.decodeResource(getResources(), R.drawable.cjl);
+            Bitmap djl_im = BitmapFactory.decodeResource(getResources(), R.drawable.djl);
+            Bitmap odf_im = BitmapFactory.decodeResource(getResources(), R.drawable.fan);
+            GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
+            if(feature.hasProperty("EQUIPMENT_ID")){
+                if(feature.getProperty("EQUIPMENT_ID").contains("FNO"))
+                {
+                    pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(fno_im));
+                }
+                else if(feature.getProperty("EQUIPMENT_ID").contains("EBR"))
+                {
+                    pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(ebr_im));
+                }
+                else if(feature.getProperty("EQUIPMENT_ID").contains("MPT"))
+                {
+                    pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(mpt_im));
+                }
+                else if(feature.getProperty("EQUIPMENT_ID").contains("CJL"))
+                {
+                    pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(cjl_im));
+                }
+                else if(feature.getProperty("EQUIPMENT_ID").contains("DJL"))
+                {
+                    pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(djl_im));
+                }
+                else if(feature.getProperty("EQUIPMENT_ID").contains("ODF"))
+                {
+                    pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(odf_im));
+                }
+
+            }
+            else {
+
+
                 pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(pit_im));
                 pointStyle.setTitle("Pit");
                 pointStyle.setSnippet(feature.getProperty("ID"));
+            }
 
-                feature.setPointStyle(pointStyle);
+            feature.setPointStyle(pointStyle);
 
         }
     }
@@ -207,7 +266,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
 
                             startActivity(new Intent(getApplicationContext(), TrenchSurveyActivity.class));
                         }  else {
-                            AlertDialog.Builder alert = new AlertDialog.Builder(GeoJsonDemoActivity.this);
+                            AlertDialog.Builder alert = new AlertDialog.Builder(SurveyActivity.this);
                             alert.setTitle("Error");
                             alert.setMessage("No Duct found for this Trench");
                             alert.setPositiveButton("OK",null);
@@ -234,15 +293,11 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         public void onClick(DialogInterface dialog, int which) {
             switch (which) {
                 case DialogInterface.BUTTON_POSITIVE:
-                    try {
-                        GeoJsonLayer layer_eq_pit = new GeoJsonLayer(getMap(), R.raw.equipmentandpit, getApplicationContext());
-                        GeoJsonLayer layer_eq = new GeoJsonLayer(getMap(), R.raw.equipment, getApplicationContext());
-
-                    }catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    Intent i = new Intent(SurveyActivity.this,PitSurveyActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("pitid",inspect_id);
+                    i.putExtras(bundle);
+                    startActivity(i);
 
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
@@ -276,7 +331,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
             @Override
             public void onFeatureClick(Feature feature)
             {
-               // Toast.makeText(GeoJsonDemoActivity.this, "Feature clicked: " + feature.getProperty("ID"), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(SurveyActivity.this, "Feature clicked: " + feature.getProperty("ID"), Toast.LENGTH_SHORT).show();
                 if(feature.hasProperty("TRENCH_ID")) {
                     highlightselected(feature.getProperty("TRENCH_ID"), layer);
                 }
@@ -284,7 +339,7 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
 
                 if (feature.hasProperty("TRENCH_ID"))
                 {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(GeoJsonDemoActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SurveyActivity.this);
                     builder.setMessage("Do you want to survey this Trench").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
 
                 }
@@ -297,8 +352,9 @@ public class GeoJsonDemoActivity extends BaseDemoActivity {
         getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(GeoJsonDemoActivity.this,String.valueOf(marker.getPosition())+ String.valueOf(marker.getSnippet()),Toast.LENGTH_SHORT).show();
-                AlertDialog.Builder builder = new AlertDialog.Builder(GeoJsonDemoActivity.this);
+                Toast.makeText(SurveyActivity.this,String.valueOf(marker.getPosition())+ String.valueOf(marker.getSnippet()),Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(SurveyActivity.this);
+                inspect_id=String.valueOf(marker.getSnippet());
                 builder.setMessage("Do you want to survey this Pit").setPositiveButton("Yes", pit_dialogClickListener).setNegativeButton("No", pit_dialogClickListener).show();
 
             }

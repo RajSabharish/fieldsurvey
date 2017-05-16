@@ -30,7 +30,7 @@ public class CaptureImageActivity extends Activity {
             }
         });
 
-        Button uploadButton = (Button) this.findViewById(R.id.nodebutton);
+        Button uploadButton = (Button) this.findViewById(R.id.fibereqpbutton);
         uploadButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

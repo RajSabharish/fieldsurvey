@@ -17,9 +17,9 @@ import android.widget.EditText;
  */
 public class SurveyFragment extends Fragment {
 
-    private boolean nodeclickstate=false;
+    private boolean fiberclickstate =false;
     private boolean ugclickstate=false;
-    private boolean eqpclickstate=false;
+    private boolean copperclickstate =false;
     EditText SamCode;
 
 
@@ -33,15 +33,16 @@ public class SurveyFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_survey, container, false);
-        final Button nodebutton = (Button) view.findViewById(R.id.nodebutton);
+        final Button nodebutton = (Button) view.findViewById(R.id.fibereqpbutton);
         final Button ugbutton = (Button) view.findViewById(R.id.ugbutton);
-        final Button eqpbutton = (Button) view.findViewById(R.id.eqpbutton);
+        final Button eqpbutton = (Button) view.findViewById(R.id.coppereqpbutton);
+
 
         nodebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nodeclickstate=!nodeclickstate;
-                if(nodeclickstate==true)
+                fiberclickstate =!fiberclickstate;
+                if(fiberclickstate ==true)
                 {
                     nodebutton.setBackgroundTintList(getResources().getColorStateList(R.color.pink));
                 }
@@ -68,8 +69,8 @@ public class SurveyFragment extends Fragment {
         eqpbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eqpclickstate=!eqpclickstate;
-                if(eqpclickstate==true)
+                copperclickstate =!copperclickstate;
+                if(copperclickstate ==true)
                 {
                     eqpbutton.setBackgroundTintList(getResources().getColorStateList(R.color.pink));
                 }
@@ -86,19 +87,34 @@ public class SurveyFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                if((SamCode.getText().toString().trim()).equals("3KGP-01")){
-                    startActivity(new Intent(getActivity(), GeoJsonDemoActivity.class));
+                if (copperclickstate || ugclickstate || fiberclickstate) {
+                    if ((SamCode.getText().toString().trim()).equals("3KGP-01")) {
+                        Intent intent = new Intent(getActivity(), SurveyActivity.class);
+                        Bundle extras = new Bundle();
+                        extras.putBoolean("ugstate", ugclickstate);
+                        extras.putBoolean("fiberstate", fiberclickstate);
+                        extras.putBoolean("copperstate", copperclickstate);
+                        intent.putExtras(extras);
+                        startActivity(intent);
+
+
+                    } else {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                        alert.setTitle("Failure");
+                        alert.setMessage("No Details for the SAM found. Try a different SAM");
+                        alert.setPositiveButton("OK", null);
+                        alert.show();
+                    }
 
                 }
                 else
                 {
                     AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                     alert.setTitle("Failure");
-                    alert.setMessage("No Details for the SAM found. Try a different SAM");
-                    alert.setPositiveButton("OK",null);
+                    alert.setMessage("Select any one of the Work package to Survey");
+                    alert.setPositiveButton("OK", null);
                     alert.show();
                 }
-
             }
         });
 

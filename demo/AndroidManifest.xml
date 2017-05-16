@@ -44,8 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GeoJsonDemoActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"   />
+        <activity
+            android:name=".SurveyActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name=".CaptureImageActivity"
             android:label="@string/title_activity_capture_image" />
@@ -54,7 +55,12 @@
             android:label="@string/title_activity_trench_survey" />
         <activity
             android:name=".MainActivity"
-            android:label="INFA"/>
+            android:label="INFA" />
+        <activity
+            android:name=".PitSurveyActivity"
+            android:label="INFA" />
+        <activity android:name=".ConstructionActivity" />
+        <activity android:name=".EquipmentUpkeepActivity"></activity>
     </application>
 
 </manifest>
