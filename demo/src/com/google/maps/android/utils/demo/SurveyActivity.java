@@ -139,32 +139,42 @@ public class SurveyActivity extends BaseDemoActivity {
                 if(feature.getProperty("EQUIPMENT_ID").contains("FNO"))
                 {
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(fno_im));
+                    pointStyle.setTitle("Pit");
+                    pointStyle.setSnippet(feature.getProperty("PIT_ID"));
                 }
                 else if(feature.getProperty("EQUIPMENT_ID").contains("EBR"))
                 {
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(ebr_im));
+                    pointStyle.setTitle("Pit");
+                    pointStyle.setSnippet(feature.getProperty("PIT_ID"));
                 }
                 else if(feature.getProperty("EQUIPMENT_ID").contains("MPT"))
                 {
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(mpt_im));
+                    pointStyle.setTitle("Pit");
+                    pointStyle.setSnippet(feature.getProperty("PIT_ID"));
                 }
                 else if(feature.getProperty("EQUIPMENT_ID").contains("CJL"))
                 {
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(cjl_im));
+                    pointStyle.setTitle("Pit");
+                    pointStyle.setSnippet(feature.getProperty("PIT_ID"));
                 }
                 else if(feature.getProperty("EQUIPMENT_ID").contains("DJL"))
                 {
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(djl_im));
+                    pointStyle.setTitle("Pit");
+                    pointStyle.setSnippet(feature.getProperty("PIT_ID"));
                 }
                 else if(feature.getProperty("EQUIPMENT_ID").contains("ODF"))
                 {
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(odf_im));
+                    pointStyle.setTitle("Pit");
+                    pointStyle.setSnippet(feature.getProperty("PIT_ID"));
                 }
 
             }
             else {
-
-
                 pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(pit_im));
                 pointStyle.setTitle("Pit");
                 pointStyle.setSnippet(feature.getProperty("ID"));
@@ -306,6 +316,7 @@ public class SurveyActivity extends BaseDemoActivity {
         }
     };
 
+
     public boolean searchductid(String id){
         for (int i=0;i<Ipsum.DuctId.size();i++){
             if(Ipsum.DuctId.get(i).equals(id)){
@@ -343,6 +354,7 @@ public class SurveyActivity extends BaseDemoActivity {
                     builder.setMessage("Do you want to survey this Trench").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
 
                 }
+
 
             }
 
