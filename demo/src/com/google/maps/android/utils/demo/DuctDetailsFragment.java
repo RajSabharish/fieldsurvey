@@ -1,10 +1,9 @@
 package com.google.maps.android.utils.demo;
 
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,9 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,15 +72,15 @@ public class DuctDetailsFragment extends Fragment{
         EditText matrixCodeText = (EditText) getActivity().findViewById(R.id.matrixCodeText);
         final EditText cableTypeText = (EditText) getActivity().findViewById(R.id.cableTypeText);
         cableTypeText.setKeyListener(null);
-        ductIdText.setText(Ipsum.DuctId.get(position));
+        ductIdText.setText(ListItems.DuctId.get(position));
         ductIdText.setKeyListener(null);
-        ductLengthText.setText(Ipsum.Details.get(temp));
-        ductSizeText.setText(Ipsum.Details.get(++temp));
-        ductMaterialText.setText(Ipsum.Details.get(++temp));
-        ductCapacityText.setText(Ipsum.Details.get(++temp));
-        maxMandrelText.setText(Ipsum.Details.get(++temp));
-        matrixCodeText.setText(Ipsum.Details.get(++temp));
-        if (Ipsum.Details.get(++temp).equals("TELSTRA")){
+        ductLengthText.setText(ListItems.Details.get(temp));
+        ductSizeText.setText(ListItems.Details.get(++temp));
+        ductMaterialText.setText(ListItems.Details.get(++temp));
+        ductCapacityText.setText(ListItems.Details.get(++temp));
+        maxMandrelText.setText(ListItems.Details.get(++temp));
+        matrixCodeText.setText(ListItems.Details.get(++temp));
+        if (ListItems.Details.get(++temp).equals("TELSTRA")){
             ownerSpinner.setSelection(1);
         } else
         {
@@ -94,13 +91,13 @@ public class DuctDetailsFragment extends Fragment{
 
 
         for(int i=0;i<cablepos;i++){
-            cableloc=((Integer.parseInt(Ipsum.CableCount.get(i)))*2)+cableloc;
+            cableloc=((Integer.parseInt(ListItems.CableCount.get(i)))*2)+cableloc;
         }
         final List<String> tmplist=new ArrayList<String>();
         tmplist.clear();
-        int cap=cableloc+(Integer.parseInt(Ipsum.CableCount.get(cablepos))*2);
+        int cap=cableloc+(Integer.parseInt(ListItems.CableCount.get(cablepos))*2);
         for(int i=cableloc;i<cap;i=i+2){
-            tmplist.add(Ipsum.CableIDs.get(i));
+            tmplist.add(ListItems.CableIDs.get(i));
         }
 
         cableSpinner = (Spinner)getActivity().findViewById(R.id.proposedCableIDSpinner);
@@ -112,7 +109,7 @@ public class DuctDetailsFragment extends Fragment{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 int displaycable=cableSpinner.getSelectedItemPosition();
-                cableTypeText.setText(Ipsum.CableIDs.get(cableloc+(displaycable*2)+1));
+                cableTypeText.setText(ListItems.CableIDs.get(cableloc+(displaycable*2)+1));
             }
 
             @Override
@@ -120,8 +117,8 @@ public class DuctDetailsFragment extends Fragment{
 
             }
         });
-        for(int i=0;i<Ipsum.DuctId.size();i++){
-            System.out.println(Ipsum.DuctId.get(i));
+        for(int i = 0; i< ListItems.DuctId.size(); i++){
+            System.out.println(ListItems.DuctId.get(i));
         }
 
 

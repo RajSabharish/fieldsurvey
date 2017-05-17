@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.os.Build;
+
 
 /**
  * Created by raj.a.natarajan on 5/4/2017.
@@ -25,7 +25,7 @@ public class DuctIdFragment extends ListFragment {
 
         int layout = android.R.layout.simple_list_item_activated_1;
 
-        setListAdapter(new ArrayAdapter<String>(getActivity(), layout,Ipsum.DuctId));
+        setListAdapter(new ArrayAdapter<String>(getActivity(), layout, ListItems.DuctId));
     }
 
     @Override

@@ -26,7 +26,7 @@ public class MaintenanceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view =  inflater.inflate(R.layout.fragment_maintenance, container, false);
 
         final Button eqpupkeepbutton = (Button) view.findViewById(R.id.eqpupkeepbutton);

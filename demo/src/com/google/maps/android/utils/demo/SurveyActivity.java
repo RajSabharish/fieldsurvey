@@ -230,8 +230,8 @@ public class SurveyActivity extends BaseDemoActivity {
             switch (which)
             {
                case DialogInterface.BUTTON_POSITIVE:
-                    Ipsum.DuctId.clear();
-                    Ipsum.Details.clear();
+                    ListItems.DuctId.clear();
+                    ListItems.Details.clear();
                     int flag=0;
                     try {
                         GeoJsonLayer layer = new GeoJsonLayer(getMap(), R.raw.cable_duct_trench, getApplicationContext());
@@ -244,26 +244,26 @@ public class SurveyActivity extends BaseDemoActivity {
                                     if(searchductid(feature.getProperty("Duct_ID")))
                                     {
                                         int count=0;
-                                        Ipsum.DuctId.add(feature.getProperty("Duct_ID"));
-                                        Ipsum.Details.add(feature.getProperty("LENGTH"));
-                                        Ipsum.Details.add(feature.getProperty("SIZE"));
-                                        Ipsum.Details.add(feature.getProperty("MATERIAL"));
-                                        Ipsum.Details.add(feature.getProperty("PERCENTAGE_FULL"));
-                                        Ipsum.Details.add(feature.getProperty("MAX_MANDREL"));
-                                        Ipsum.Details.add(feature.getProperty("DUCT_CODE"));
-                                        Ipsum.Details.add(feature.getProperty("OWNER"));
+                                        ListItems.DuctId.add(feature.getProperty("Duct_ID"));
+                                        ListItems.Details.add(feature.getProperty("LENGTH"));
+                                        ListItems.Details.add(feature.getProperty("SIZE"));
+                                        ListItems.Details.add(feature.getProperty("MATERIAL"));
+                                        ListItems.Details.add(feature.getProperty("PERCENTAGE_FULL"));
+                                        ListItems.Details.add(feature.getProperty("MAX_MANDREL"));
+                                        ListItems.Details.add(feature.getProperty("DUCT_CODE"));
+                                        ListItems.Details.add(feature.getProperty("OWNER"));
                                         for (GeoJsonFeature feature1 : layer.getFeatures()) {
                                             if (feature.getProperty("Duct_ID").equals(feature1.getProperty("Duct_ID"))){
                                                 count++;
-                                                Ipsum.CableIDs.add(feature1.getProperty("CABLE_ID"));
+                                                ListItems.CableIDs.add(feature1.getProperty("CABLE_ID"));
                                                 for (GeoJsonFeature feature2 : layer1.getFeatures()) {
                                                     if (feature1.getProperty("CABLE_ID").equals(feature2.getProperty("ID"))){
-                                                        Ipsum.CableIDs.add(feature2.getProperty("TYPE"));
+                                                        ListItems.CableIDs.add(feature2.getProperty("TYPE"));
                                                     }
                                                 }
                                             }
                                         }
-                                        Ipsum.CableCount.add(Integer.toString(count));
+                                        ListItems.CableCount.add(Integer.toString(count));
                                         flag = 1;
                                     }
                                 }
@@ -318,8 +318,8 @@ public class SurveyActivity extends BaseDemoActivity {
 
 
     public boolean searchductid(String id){
-        for (int i=0;i<Ipsum.DuctId.size();i++){
-            if(Ipsum.DuctId.get(i).equals(id)){
+        for (int i = 0; i< ListItems.DuctId.size(); i++){
+            if(ListItems.DuctId.get(i).equals(id)){
                 return false;
             }
         }

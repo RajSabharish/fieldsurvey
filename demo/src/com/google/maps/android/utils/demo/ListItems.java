@@ -7,12 +7,11 @@ import java.util.List;
  * Created by raj.a.natarajan on 5/4/2017.
  */
 
-public class Ipsum {
+public class ListItems {
 
     static List<String> DuctId = new ArrayList<String>();
     static List<String> CableCount = new ArrayList<String>();
     static List<String> Details = new ArrayList<String>();
     static List<String> CableIDs = new ArrayList<String>();
-    static List<String> PitId = new ArrayList<String>();
 }
 
