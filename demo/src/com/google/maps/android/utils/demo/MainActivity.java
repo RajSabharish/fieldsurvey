@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private int[] tabIcons = {
-            R.drawable.survey,
-            R.drawable.construction,
-            R.drawable.maintenance
+            R.drawable.surveylogo,
+            R.drawable.constructionlogo,
+            R.drawable.maintenancelogo
     };
 
     @Override
