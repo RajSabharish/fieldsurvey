@@ -13,12 +13,15 @@ import android.widget.ImageView;
 public class CaptureImageActivity extends Activity {
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
+    public static String DuctId,selectedValue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture_image);
-
+        Intent intent = getIntent();
+        DuctId = intent.getStringExtra("ductIdKey");
+        selectedValue = intent.getStringExtra("selectedValue");
         this.imageView = (ImageView)this.findViewById(R.id.imageView1);
         Button photoButton = (Button) this.findViewById(R.id.ugbutton);
         photoButton.setOnClickListener(new View.OnClickListener() {
@@ -37,9 +40,16 @@ public class CaptureImageActivity extends Activity {
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImageActivity.this);
                 alert.setTitle("Upload");
-                alert.setMessage("Image Uploaded");
-                alert.setPositiveButton("OK",dialogClickListener);
-                alert.show();
+                if (selectedValue.equals("Yes"))
+                {
+                    alert.setMessage("Image Uploaded");
+                    alert.setPositiveButton("OK",null);
+                    alert.show();
+                }
+                if (selectedValue.equals("No"))
+                {
+                    alert.setMessage("Image Uploaded! Do you want to find alternate ducts ?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+                }
 
             }
         });
@@ -54,7 +64,9 @@ public class CaptureImageActivity extends Activity {
             switch (which)
             {
                 case DialogInterface.BUTTON_POSITIVE:
-                  //  startActivity(new Intent(getApplicationContext(), VideoActivity.class));
+                    Intent i = new Intent(CaptureImageActivity.this, AlternateDucts.class);
+                    i.putExtra("id_key",DuctId);
+                    startActivity(i);
                     break;
 
             }

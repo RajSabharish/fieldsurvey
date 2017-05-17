@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -27,6 +29,8 @@ public class DuctDetailsFragment extends Fragment{
     final static String ARG_POSITION = "position";
     int mCurrentPosition = -1;
     private Spinner ownerSpinner,cableSpinner;
+    public static String ductid;
+    public static String selectedRadioIdvalue;
     private static final String[]owners = {"NBN", "TELSTRA"};
     int cableloc = 0;
 
@@ -74,6 +78,7 @@ public class DuctDetailsFragment extends Fragment{
         cableTypeText.setKeyListener(null);
         ductIdText.setText(ListItems.DuctId.get(position));
         ductIdText.setKeyListener(null);
+        ductid=ListItems.DuctId.get(position);
         ductLengthText.setText(ListItems.Details.get(temp));
         ductSizeText.setText(ListItems.Details.get(++temp));
         ductMaterialText.setText(ListItems.Details.get(++temp));
@@ -131,6 +136,11 @@ public class DuctDetailsFragment extends Fragment{
 
             @Override
             public void onClick(View v) {
+                RadioGroup radioDecissionGroup = (RadioGroup)getActivity().findViewById(R.id.radioDecission);
+                int selectedRadioId = radioDecissionGroup.getCheckedRadioButtonId();
+                RadioButton radioButton = (RadioButton)getActivity().findViewById(selectedRadioId);
+                selectedRadioIdvalue = (String) radioButton.getText();
+                System.out.println(selectedRadioIdvalue+"selectedRadioId");
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                 alert.setTitle("Save");
                 alert.setMessage("Are you sure to proceed?");
@@ -152,6 +162,8 @@ public class DuctDetailsFragment extends Fragment{
             {
                 case DialogInterface.BUTTON_POSITIVE:
                     Intent myIntent = new Intent(getActivity(), CaptureImageActivity.class);
+                    myIntent.putExtra("ductIdKey", ductid);
+                    myIntent.putExtra("selectedValue", selectedRadioIdvalue);
                     getActivity().startActivity(myIntent);
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
