@@ -35,8 +35,9 @@ public class SurveyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_survey, container, false);
-        final Drawable str_on = ContextCompat.getDrawable(getActivity(),R.drawable.btn_star_big_on);
+        View view = inflater.inflate(R.layout.survey_fragment, container, false);
+    return view;}}
+       /* final Drawable str_on = ContextCompat.getDrawable(getActivity(),R.drawable.btn_star_big_on);
         final Drawable str_off = ContextCompat.getDrawable(getActivity(),R.drawable.btn_star_big_off);
         final ImageButton copperbutton = (ImageButton) view.findViewById(R.id.copperstarbutton);
         final ImageButton ugbutton = (ImageButton) view.findViewById(R.id.ugstarbutton);
@@ -129,4 +130,4 @@ public class SurveyFragment extends Fragment {
         return view;
     }
 
-}
+}*/
