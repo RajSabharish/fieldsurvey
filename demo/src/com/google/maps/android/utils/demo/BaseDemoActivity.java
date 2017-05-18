@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -142,7 +144,8 @@ public abstract class BaseDemoActivity extends FragmentActivity implements OnMap
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+        Bitmap cur_im = BitmapFactory.decodeResource(getResources(), R.drawable.current_location_marker);
+        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(cur_im));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera

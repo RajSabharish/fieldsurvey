@@ -12,7 +12,22 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        tools:layout="@layout/geojson_demo"/>
+        tools:layout="@layout/activity_construction">
+
+
+        <ImageButton
+            android:id="@+id/layer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|top"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/layers_icon"
+            />
+
+    </fragment>
+
 
 
 </LinearLayout>

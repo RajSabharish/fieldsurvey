@@ -3,13 +3,16 @@ package com.google.maps.android.utils.demo;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 
 /**
@@ -33,21 +36,26 @@ public class SurveyFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_survey, container, false);
-        final Button nodebutton = (Button) view.findViewById(R.id.fibereqpbutton);
-        final Button ugbutton = (Button) view.findViewById(R.id.ugbutton);
-        final Button eqpbutton = (Button) view.findViewById(R.id.coppereqpbutton);
+        final Drawable str_on = ContextCompat.getDrawable(getActivity(),R.drawable.btn_star_big_on);
+        final Drawable str_off = ContextCompat.getDrawable(getActivity(),R.drawable.btn_star_big_off);
+        final ImageButton copperbutton = (ImageButton) view.findViewById(R.id.copperstarbutton);
+        final ImageButton ugbutton = (ImageButton) view.findViewById(R.id.ugstarbutton);
+        final ImageButton fiberbutton = (ImageButton) view.findViewById(R.id.fiberstarbutton);
+        copperbutton.setImageDrawable(str_off);
+        ugbutton.setImageDrawable(str_off);
+        fiberbutton.setImageDrawable(str_off);
 
 
-        nodebutton.setOnClickListener(new View.OnClickListener() {
+        fiberbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fiberclickstate =!fiberclickstate;
                 if(fiberclickstate ==true)
                 {
-                    nodebutton.setBackgroundTintList(getResources().getColorStateList(R.color.pink));
+                    fiberbutton.setImageDrawable(str_on);
                 }
                 else {
-                    nodebutton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
+                    fiberbutton.setImageDrawable(str_off);
                 }
             }
         });
@@ -58,24 +66,24 @@ public class SurveyFragment extends Fragment {
                 ugclickstate=!ugclickstate;
                 if(ugclickstate==true)
                 {
-                    ugbutton.setBackgroundTintList(getResources().getColorStateList(R.color.pink));
+                    ugbutton.setImageDrawable(str_on);
                 }
                 else {
-                    ugbutton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
+                    ugbutton.setImageDrawable(str_off);
                 }
             }
         });
 
-        eqpbutton.setOnClickListener(new View.OnClickListener() {
+        copperbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 copperclickstate =!copperclickstate;
                 if(copperclickstate ==true)
                 {
-                    eqpbutton.setBackgroundTintList(getResources().getColorStateList(R.color.pink));
+                    copperbutton.setImageDrawable(str_on);
                 }
                 else {
-                    eqpbutton.setBackgroundTintList(getResources().getColorStateList(R.color.colorAccent));
+                    copperbutton.setImageDrawable(str_off);
                 }
             }
         });

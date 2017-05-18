@@ -76,7 +76,12 @@ public class MaintenanceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(((SamCode.getText().toString().trim()).equals("3KGP-01"))&&(faultremediationclickstate==true || eqpupkeepclickstate==true)){
-                    startActivity(new Intent(getActivity(), SurveyActivity.class));
+                    Intent intent = new Intent(getActivity(), MaintenanceActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putBoolean("upkeepclickstate", eqpupkeepclickstate);
+                    extras.putBoolean("remediationclickstate", faultremediationclickstate);
+                    intent.putExtras(extras);
+                    startActivity(intent);
 
                 }
                 else if(faultremediationclickstate==false && eqpupkeepclickstate==false){

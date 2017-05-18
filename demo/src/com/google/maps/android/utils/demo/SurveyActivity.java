@@ -46,7 +46,7 @@ public class SurveyActivity extends BaseDemoActivity {
     }
 
     protected int getLayoutId() {
-        return R.layout.geojson_demo;
+        return R.layout.activity_survey;
     }
 
     @Override

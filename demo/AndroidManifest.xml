@@ -60,7 +60,7 @@
             android:name=".PitSurveyActivity"
             android:label="INFA" />
         <activity android:name=".ConstructionActivity" />
-        <activity android:name=".EquipmentUpkeepActivity" />
+        <activity android:name=".MaintenanceActivity" />
         <activity android:name=".AlternateDucts"></activity>
     </application>
 
