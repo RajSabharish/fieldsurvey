@@ -43,7 +43,7 @@
                 android:id="@+id/constraintLayout">
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/ugbutton"
                     android:layout_width="175dp"
                     android:layout_height="172dp"
                     android:layout_marginLeft="8dp"
@@ -59,31 +59,32 @@
                     android:textSize="35sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button4" />
+                    app:layout_constraintTop_toBottomOf="@+id/aerialbutton" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/copperbutton"
                     android:layout_width="175dp"
                     android:layout_height="172dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="0dp"
                     android:layout_marginTop="8dp"
                     android:alpha="0.85"
                     android:background="@drawable/rsz_coppercable_200x111"
                     android:elevation="8dp"
                     android:fontFamily="serif-monospace"
-                    android:paddingTop="45dp"
+                    android:paddingTop="60dp"
                     android:text="Copper"
                     android:textAlignment="center"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="35sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/button4"
+                    app:layout_constraintLeft_toRightOf="@+id/aerialbutton"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/aerialbutton"
                     android:layout_width="175dp"
                     android:layout_height="172dp"
                     android:layout_marginBottom="8dp"
@@ -107,11 +108,11 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/fiberbutton"
                     android:layout_width="175dp"
                     android:layout_height="172dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="0dp"
+                    android:layout_marginLeft="-32dp"
                     android:layout_marginTop="0dp"
                     android:alpha="0.85"
                     android:background="@drawable/rsz_1fibercable_200x111"
@@ -124,8 +125,8 @@
                     android:textSize="35sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/button7"
-                    app:layout_constraintTop_toBottomOf="@+id/button6"
+                    app:layout_constraintLeft_toRightOf="@+id/ugbutton"
+                    app:layout_constraintTop_toBottomOf="@+id/copperbutton"
                     app:layout_constraintVertical_bias="0.0" />
 
             </android.support.constraint.ConstraintLayout>

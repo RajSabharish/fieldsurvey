@@ -55,6 +55,7 @@
             android:label="@string/title_activity_trench_survey" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:label="INFA" />
         <activity
             android:name=".PitSurveyActivity"

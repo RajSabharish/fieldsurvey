@@ -2,6 +2,7 @@ package com.google.maps.android.utils.demo;
 
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 /**
@@ -36,98 +39,189 @@ public class SurveyFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.survey_fragment, container, false);
-    return view;}}
-       /* final Drawable str_on = ContextCompat.getDrawable(getActivity(),R.drawable.btn_star_big_on);
-        final Drawable str_off = ContextCompat.getDrawable(getActivity(),R.drawable.btn_star_big_off);
-        final ImageButton copperbutton = (ImageButton) view.findViewById(R.id.copperstarbutton);
-        final ImageButton ugbutton = (ImageButton) view.findViewById(R.id.ugstarbutton);
-        final ImageButton fiberbutton = (ImageButton) view.findViewById(R.id.fiberstarbutton);
-        copperbutton.setImageDrawable(str_off);
-        ugbutton.setImageDrawable(str_off);
-        fiberbutton.setImageDrawable(str_off);
+        Button ugbutton = (Button) view.findViewById(R.id.ugbutton);
+        Button aerialbutton = (Button) view.findViewById(R.id.aerialbutton);
+        Button copperbutton = (Button) view.findViewById(R.id.copperbutton);
+        Button fiberbutton = (Button) view.findViewById(R.id.fiberbutton);
 
 
-        fiberbutton.setOnClickListener(new View.OnClickListener() {
+        aerialbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                fiberclickstate =!fiberclickstate;
-                if(fiberclickstate ==true)
-                {
-                    fiberbutton.setImageDrawable(str_on);
-                }
-                else {
-                    fiberbutton.setImageDrawable(str_off);
-                }
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("AERIAL SURVEY");
+                alertDialog.setMessage("Enter SAM CODE");
+
+                final EditText input = new EditText(getActivity());
+                input.setMaxLines(1);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                alertDialog.setView(input);
+
+                alertDialog.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String samcode = input.getText().toString();
+                                if ((samcode.trim()).equals("3KGP-01")) {
+                                    Toast.makeText(getActivity(),"No Aerial network data found for this SAM. Please select a different survey", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(getActivity(),"No details found for this SAM.. Enter a different SAM Code", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+                alertDialog.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alertDialog.show();
             }
+
         });
 
-        ugbutton.setOnClickListener(new View.OnClickListener() {
+        ugbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ugclickstate=!ugclickstate;
-                if(ugclickstate==true)
-                {
-                    ugbutton.setImageDrawable(str_on);
-                }
-                else {
-                    ugbutton.setImageDrawable(str_off);
-                }
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("UG SURVEY");
+                alertDialog.setMessage("Enter SAM CODE");
+
+                final EditText input = new EditText(getActivity());
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                alertDialog.setView(input);
+
+                alertDialog.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String samcode = input.getText().toString();
+                                if ((samcode.trim()).equals("3KGP-01")) {
+                                    Intent intent = new Intent(getActivity(), SurveyActivity.class);
+                                    Bundle extras = new Bundle();
+                                    extras.putBoolean("ugstate", true);
+                                    extras.putBoolean("fiberstate", false);
+                                    extras.putBoolean("copperstate", false);
+                                    intent.putExtras(extras);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getActivity(),"No details found for this SAM.. Enter a different SAM Code", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+                alertDialog.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alertDialog.show();
             }
+
         });
 
-        copperbutton.setOnClickListener(new View.OnClickListener() {
+        copperbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                copperclickstate =!copperclickstate;
-                if(copperclickstate ==true)
-                {
-                    copperbutton.setImageDrawable(str_on);
-                }
-                else {
-                    copperbutton.setImageDrawable(str_off);
-                }
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("COPPER EQUIPMENT SURVEY");
+                alertDialog.setMessage("Enter SAM CODE");
+
+                final EditText input = new EditText(getActivity());
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                alertDialog.setView(input);
+
+                alertDialog.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String samcode = input.getText().toString();
+                                if ((samcode.trim()).equals("3KGP-01")) {
+                                    Intent intent = new Intent(getActivity(), SurveyActivity.class);
+                                    Bundle extras = new Bundle();
+                                    extras.putBoolean("ugstate", false);
+                                    extras.putBoolean("fiberstate", false);
+                                    extras.putBoolean("copperstate", true);
+                                    intent.putExtras(extras);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getActivity(),"No details found for this SAM.. Enter a different SAM Code", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+                alertDialog.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alertDialog.show();
             }
+
         });
 
-        Button SurveyButton = (Button) view.findViewById(R.id.survey_submitbtn);
-        SamCode = (EditText) view.findViewById(R.id.survey_samcodetext);
-
-        SurveyButton.setOnClickListener(new View.OnClickListener() {
-
+        fiberbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (copperclickstate || ugclickstate || fiberclickstate) {
-                    if ((SamCode.getText().toString().trim()).equals("3KGP-01")) {
-                        Intent intent = new Intent(getActivity(), SurveyActivity.class);
-                        Bundle extras = new Bundle();
-                        extras.putBoolean("ugstate", ugclickstate);
-                        extras.putBoolean("fiberstate", fiberclickstate);
-                        extras.putBoolean("copperstate", copperclickstate);
-                        intent.putExtras(extras);
-                        startActivity(intent);
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                alertDialog.setTitle("FIBER EQUIPMENT SURVEY");
+                alertDialog.setMessage("Enter SAM CODE");
 
+                final EditText input = new EditText(getActivity());
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                alertDialog.setView(input);
 
-                    } else {
-                        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-                        alert.setTitle("Failure");
-                        alert.setMessage("No Details for the SAM found. Try a different SAM");
-                        alert.setPositiveButton("OK", null);
-                        alert.show();
-                    }
+                alertDialog.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String samcode = input.getText().toString();
+                                if ((samcode.trim()).equals("3KGP-01")) {
+                                    Intent intent = new Intent(getActivity(), SurveyActivity.class);
+                                    Bundle extras = new Bundle();
+                                    extras.putBoolean("ugstate", false);
+                                    extras.putBoolean("fiberstate", true);
+                                    extras.putBoolean("copperstate", false);
+                                    intent.putExtras(extras);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getActivity(),"No details found for this SAM.. Enter a different SAM Code", Toast.LENGTH_SHORT).show();
 
-                }
-                else
-                {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-                    alert.setTitle("Failure");
-                    alert.setMessage("Select any one of the Work package to Survey");
-                    alert.setPositiveButton("OK", null);
-                    alert.show();
-                }
+                                }
+                            }
+                        });
+
+                alertDialog.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alertDialog.show();
             }
+
         });
 
-        return view;
+
+    return view;
     }
+}
 
-}*/

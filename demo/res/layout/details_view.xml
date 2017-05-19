@@ -368,15 +368,15 @@
             android:id="@+id/matrixCodeText"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
             app:layout_constraintLeft_toRightOf="@+id/textView5"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/textView16"

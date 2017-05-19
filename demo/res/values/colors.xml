@@ -6,9 +6,9 @@
         <color name="textColorPrimary">#ffffff</color>
         <color name="windowBackground">#FFFFFF</color>
         <color name="navigationBarColor">#000000</color>
-        <color name="colorAccent">#c8e8ff</color>
+        <color name="colorAccent">#ef8181</color>
         <color name="indigo">#4b0082</color>
-        <color name="pink">#ffc0cb</color>
+        <color name="pink">#ffe22b</color>
 
 
 </resources>
