@@ -53,7 +53,7 @@ public class CaptureImagePit extends AppCompatActivity {
                 }
                 if (selectedValue.equals("No"))
                 {
-                    alert.setMessage("Image Uploaded! Do you want to find alternate ducts ?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+                    alert.setMessage("Image Uploaded! Do you want to find alternate Pits ?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
                 }
 
             }

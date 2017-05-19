@@ -150,7 +150,7 @@ public class AlternatePits extends BaseDemoActivity {
                         .icon(icon)
                         .position(sydney));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(sydney,20);
+        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(sydney,19);
         getMap().animateCamera(initial_location);
     }
 
