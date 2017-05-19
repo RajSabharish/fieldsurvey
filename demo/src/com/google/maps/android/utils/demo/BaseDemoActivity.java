@@ -30,6 +30,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.LocationRequest;
 import android.Manifest;
+/**
+ * Modified by varada.vamsi on 19/5/2017.
+ */
 
 public abstract class BaseDemoActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,

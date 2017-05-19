@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
+/**
+ * Created by varada.vamsi on 19/5/2017.
+ */
 public class CaptureImagePit extends AppCompatActivity {
     public static String pitId,pit_position,selectedValue;
     private static final int CAMERA_REQUEST = 1888;
