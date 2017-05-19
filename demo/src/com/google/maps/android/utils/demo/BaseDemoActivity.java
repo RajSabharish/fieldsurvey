@@ -35,7 +35,7 @@ public abstract class BaseDemoActivity extends FragmentActivity implements OnMap
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
-    private GoogleMap mMap;
+    public GoogleMap mMap;
     LocationRequest mLocationRequest;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;

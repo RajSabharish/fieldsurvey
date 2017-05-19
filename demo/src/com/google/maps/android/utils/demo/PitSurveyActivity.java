@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.google.maps.android.data.Feature;
@@ -26,19 +28,21 @@ import java.util.List;
 
 /**
  * Created by raj.a.natarajan on 5/10/2017.
+ * Modified by varada.vamsi on 19/5/2017.
  */
 
 public class PitSurveyActivity extends BaseDemoActivity{
 
     private static final String[]owners = {"NBN", "TELSTRA"};
     private Spinner ownerSpinner,eqpSpinner;
-
+    public static String pitId,pit_position,selectedRadioIdvalue;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pit_survey);
         Bundle bundle = getIntent().getExtras();
-        String pitId = bundle.getString("pitid");
+        pitId = bundle.getString("pitid");
+        pit_position = bundle.getString("pitposition");
         EditText pitIdText = (EditText) this.findViewById(R.id.structure_id_text);
         EditText sizeText = (EditText) this.findViewById(R.id.structure_size_text);
         EditText materialText = (EditText) this.findViewById(R.id.structure_material_text);
@@ -117,6 +121,11 @@ public class PitSurveyActivity extends BaseDemoActivity{
 
             @Override
             public void onClick(View v) {
+                RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioDecission);
+                int selectedRadioId = radioGroup.getCheckedRadioButtonId();
+                RadioButton radioButton = (RadioButton) radioGroup.findViewById(selectedRadioId);
+                selectedRadioIdvalue = (String) radioButton.getText();
+                System.out.println(selectedRadioIdvalue+"selectedRadioIdinPitSurveyActivityclass");
                 AlertDialog.Builder alert = new AlertDialog.Builder(PitSurveyActivity.this);
                 alert.setTitle("Save");
                 alert.setMessage("Are you sure to proceed?");
@@ -137,7 +146,13 @@ public class PitSurveyActivity extends BaseDemoActivity{
             switch (which)
             {
                 case DialogInterface.BUTTON_POSITIVE:
-                    startActivity(new Intent(getApplicationContext(), CaptureImageActivity.class));
+                    Intent i = new Intent(getApplicationContext(),CaptureImagePit.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("pitid",pitId);
+                    bundle.putString("pitposition",pit_position);
+                    bundle.putString("selectedRadioIdText",selectedRadioIdvalue);
+                    i.putExtras(bundle);
+                    startActivity(i);
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
                     break;

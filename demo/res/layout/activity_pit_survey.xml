@@ -200,6 +200,7 @@
             android:layout_marginStart="8dp" />
 
         <RadioGroup
+            android:id="@+id/radioDecission"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -218,7 +219,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.33"
-                android:text="Yes" />
+                android:text="Yes"
+                android:checked="true"
+                />
 
             <RadioButton
                 android:id="@+id/radioButton"

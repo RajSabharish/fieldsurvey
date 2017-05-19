@@ -32,7 +32,7 @@ import java.util.List;
 public class SurveyActivity extends BaseDemoActivity {
 
     private final static String mLogTag = "GeoJsonDemo";
-    public static String inspect_id;
+    public static String inspect_id,pit_position;
     public static List<String> pit_ids = new ArrayList<String>();
     public static Boolean copper_eqp_state, fiber_eqp_state, ug_state;
 
@@ -306,6 +306,7 @@ public class SurveyActivity extends BaseDemoActivity {
                     Intent i = new Intent(SurveyActivity.this,PitSurveyActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("pitid",inspect_id);
+                    bundle.putString("pitposition",pit_position);
                     i.putExtras(bundle);
                     startActivity(i);
 
@@ -367,6 +368,7 @@ public class SurveyActivity extends BaseDemoActivity {
                 Toast.makeText(SurveyActivity.this,String.valueOf(marker.getPosition())+ String.valueOf(marker.getSnippet()),Toast.LENGTH_SHORT).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SurveyActivity.this);
                 inspect_id=String.valueOf(marker.getSnippet());
+                pit_position = String.valueOf(marker.getPosition());
                 builder.setMessage("Do you want to survey this Pit").setPositiveButton("Yes", pit_dialogClickListener).setNegativeButton("No", pit_dialogClickListener).show();
 
             }
