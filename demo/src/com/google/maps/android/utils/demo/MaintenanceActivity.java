@@ -197,109 +197,30 @@ public class MaintenanceActivity extends BaseDemoActivity {
             }
             addColorsToMarkers(layer_temp);
             layer_temp.addLayerToMap();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-    /*
-
-    private void adddetails(){
-        JSONArray parentArray;
-        try {
-            GeoJsonLayer layer_temp = new GeoJsonLayer(getMap(), R.raw.temp, this);
-            GeoJsonLayer layer_tls_eqp_main = new GeoJsonLayer(getMap(), R.raw.equipment_all, this);
-            for (GeoJsonFeature feature : layer_tls_eqp_main.getFeatures()) {
-                String eqp_id = feature.getProperty("EQUIPMENT_ID");
-                if (eqp_id.contains("3KGP-01-00-DJL-001")) {
-                    layer_temp.addFeature(feature);
-                }
-            }
-            addlayerinmap(layer_temp);
-
-
-            BufferedReader jsonReader = new BufferedReader(new InputStreamReader(this.getResources().openRawResource(R.raw.cable)));
-            StringBuilder jsonBuilder = new StringBuilder();
-            for (String line = null; (line = jsonReader.readLine()) != null; ) {
-                jsonBuilder.append(line).append("\n");
-            }
-            JSONTokener tokener = new JSONTokener(jsonBuilder.toString());
-            JSONObject parentObject = new JSONObject(tokener);
-            parentArray = parentObject.getJSONArray("features");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void addsymbols(GeoJsonLayer layer)
-    {
-
-        for (GeoJsonFeature feature : layer.getFeatures())
-        {
-
-            Bitmap inc_im = BitmapFactory.decodeResource(getResources(), R.drawable.incident_note);
-
-            GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
-            pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(inc_im));
-            pointStyle.setTitle("Alert");
-            pointStyle.setSnippet(feature.getProperty("EQUIPMENT_ID"));
-
-            feature.setPointStyle(pointStyle);
-
-        }
-    }
-
-
-    private void showdetails(String id){
-        try {
-            String end_point_id="",cable_id="",start_node_id="";
-            GeoJsonLayer layer_temp = new GeoJsonLayer(getMap(), R.raw.temp, this);
-            GeoJsonLayer layer_eqp = new GeoJsonLayer(getMap(), R.raw.equipment_all, this);
-            GeoJsonLayer layer_cable = new GeoJsonLayer(getMap(), R.raw.cable, this);
-
-            for (GeoJsonFeature feature : layer_eqp.getFeatures()) {
-                String eqp_id = feature.getProperty("EQUIPMENT_ID");
-                if (eqp_id.contains(id)) {
-                    end_point_id=feature.getProperty("EQUIPMENT_ID");
-                    layer_temp.addFeature(feature);
-                }
-            }
-
-            for (GeoJsonFeature feature : layer_cable.getFeatures()) {
-                if (feature.getProperty("END_NODE_ID").contains(end_point_id)) {
-                    cable_id=feature.getProperty("ID");
-                    start_node_id=feature.getProperty("START_NODE_ID");
-                    layer_temp.addFeature(feature);
-                }
-            }
-
-            for (GeoJsonFeature feature : layer_eqp.getFeatures()) {
-                if (feature.getProperty("EQUIPMENT_ID").contains(start_node_id)) {
-                    layer_temp.addFeature(feature);
-                }
-            }
-            layer_temp.addLayerToMap();
-            final String finalStart_node_id = start_node_id;
             layer_temp.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener() {
 
                 @Override
                 public void onFeatureClick(Feature feature)
                 {
-                    if(feature.hasProperty("EQUIPMENT_ID"))
-                    {
-                        if(feature.getProperty("EQUIPMENT_ID").contains(finalStart_node_id)){
-
+                    // Toast.makeText(SurveyActivity.this, "Feature clicked: " + feature.getProperty("ID"), Toast.LENGTH_SHORT).show();
+                    if(feature.hasProperty("ID")) {
+                        if(feature.getProperty("ID").contains("LOC000005005354")||
+                                feature.getProperty("ID").contains("LOC000024269703")||
+                                feature.getProperty("ID").contains("LOC000025168142")||
+                                feature.getProperty("ID").contains("LOC000043519542")){
+                            Toast.makeText(MaintenanceActivity.this, "Run OTDR Trace from DJL", Toast.LENGTH_SHORT).show();
+                            LatLng djl_loc = new LatLng(-37.74403296, 144.79875594);
+                            CameraUpdate d_location = CameraUpdateFactory.newLatLngZoom(djl_loc,25);
+                            getMap().animateCamera(d_location);
                         }
                     }
 
+
                 }
+
             });
+
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -307,30 +228,4 @@ public class MaintenanceActivity extends BaseDemoActivity {
         }
     }
 
-    private void addlayerinmap(final GeoJsonLayer layer)
-    {
-        addsymbols(layer);
-
-        layer.addLayerToMap();
-
-        layer.setOnFeatureClickListener(new GeoJsonLayer.GeoJsonOnFeatureClickListener()
-        {
-            @Override
-            public void onFeatureClick(Feature feature)
-            {
-               String selected = feature.getProperty("EQUIPMENT_ID");
-            }
-        });
-
-        getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener()
-        {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                layer.removeLayerFromMap();
-                inspect_id = String.valueOf(marker.getSnippet());
-
-            }
-        });
-
-    }*/
 }
