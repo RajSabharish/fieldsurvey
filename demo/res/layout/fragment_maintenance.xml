@@ -8,96 +8,71 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/eqpupkeepbutton"
-            android:layout_width="154dp"
-            android:layout_height="56dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="44dp"
-            android:fontFamily="serif-monospace"
-            android:text="Equipment Upkeep"
-            android:textStyle="bold"
-            android:theme="@style/MyButton"
-            app:layout_constraintHorizontal_bias="0.583"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/faultremediationbutton"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/faultremediationbutton"
-            android:layout_width="154dp"
-            android:layout_height="56dp"
-            android:layout_alignStart="@+id/eqpupkeepbutton"
-            android:layout_below="@+id/eqpupkeepbutton"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="44dp"
-            android:fontFamily="serif-monospace"
-            android:text="Fault Remediation"
-            android:textStyle="bold"
-            android:theme="@style/MyButton"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:fontFamily="serif-monospace"
-            android:layout_marginTop="86dp"
-            android:text="SAM Code"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/maintenance_samcodetext"
-            app:layout_constraintTop_toBottomOf="@+id/eqpupkeepbutton"
-            app:layout_constraintHorizontal_bias="0.47" />
-
-        <EditText
-            android:id="@+id/maintenance_samcodetext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="serif-monospace"
-            android:layout_marginRight="8dp"
-            android:ems="10"
-            android:hint="e.g. 3SAM-20"
-            android:inputType="textPersonName"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <Button
-            android:id="@+id/maintenance_submitbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="serif-monospace"
-            android:text="Submit"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/imageView3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/maintenance_samcodetext"
-            app:layout_constraintVertical_bias="0.645" />
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="93dp"
             android:layout_height="93dp"
-            app:srcCompat="@drawable/infalogo"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="46dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.962"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:srcCompat="@drawable/infalogo" />
+
+        <Button
+            android:id="@+id/upkeep_button"
+            android:layout_width="344dp"
+            android:layout_height="153dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rsz_11remediation"
+            android:elevation="8dp"
+            android:fontFamily="serif-monospace"
+            android:paddingTop="90dp"
+            android:text="UPKEEP"
+            android:textAlignment="center"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.962" />
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/fault_button"
+            android:layout_width="344dp"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/rsz_network_hardware_maintenance"
+            android:elevation="8dp"
+            android:fontFamily="serif-monospace"
+            android:paddingTop="120dp"
+            android:text="FAULT MAINTENANCE"
+            android:textAlignment="center"
+            android:textColor="@color/navigationBarColor"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upkeep_button" />
 
     </android.support.constraint.ConstraintLayout>
 

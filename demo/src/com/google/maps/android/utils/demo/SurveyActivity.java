@@ -60,6 +60,7 @@ public class SurveyActivity extends BaseDemoActivity {
     {
         String start_node_tmp,end_node_tmp;
 
+
         try {
             GeoJsonLayer layer_tls_trench = new GeoJsonLayer(getMap(), R.raw.cable_duct_trench, this);
             GeoJsonLayer layer_temp_pit = new GeoJsonLayer(getMap(),R.raw.pit,this);

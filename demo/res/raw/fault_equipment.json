@@ -1,0 +1,8 @@
+{"name":"Equipment_Pit","type":"FeatureCollection"
+,"crs":{"type":"name","properties":{"name":"EPSG:4283"}}
+,"features":[
+{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79834788,-37.74418209]},"properties":{"SPACE_OCCUPANCY":"N/A","Size":"6","PIT_ID":"000000000216747775","ID":"000000000216747775","ROTATION":0,"OWNER":"TELSTRA","MATERIAL":"P (Thermoplastic)","EQUIPMENT_ID":"3KGP-01-02-MPT-001","TYPE":"Pit","SURFACE_TYPE":"Grass","OBJECT_STATUS":"INSERVICE"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79853904,-37.74498903]},"properties":{"SPACE_OCCUPANCY":"Low","Size":"6","PIT_ID":"000000000216748353","ID":"000000000216748353","OHS_PIT":"Yes","ROTATION":0,"OWNER":"TELSTRA","MATERIAL":"J (Injection Moulded)","EQUIPMENT_ID":"3KGP-01-01-MPT-001","TYPE":"Pit","SURFACE_TYPE":"Grass","REMEDIATE_TO":"Upgrade to 8 pit","OBJECT_STATUS":"INSERVICE"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79875594,-37.74403296]},"properties":{"SPACE_OCCUPANCY":"High","Size":"-","PIT_ID":"000000000201514859","ID":"000000000201514859","OHS_PIT":"Yes","ROTATION":0,"OWNER":"TELSTRA","MATERIAL":"-","EQUIPMENT_ID":"3KGP-01-00-DJL-001","TYPE":"Manhole-Footway","SURFACE_TYPE":"Bitumen footpath","OBJECT_STATUS":"INSERVICE"}}
+,{"type":"Feature","geometry":{"type":"Point","coordinates":[144.79936596,-37.74274101]},"properties":{"SPACE_OCCUPANCY":"N/A","Size":"-","PIT_ID":"000000000200001983","ID":"000000000200001983","OHS_PIT":"No","ROTATION":0,"OWNER":"TELSTRA","MATERIAL":"-","EQUIPMENT_ID":"3KGP-01-00-ODF-001","TYPE":"Null Node","SURFACE_TYPE":"Other","OBJECT_STATUS":"INSERVICE"}}
+]}
