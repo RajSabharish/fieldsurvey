@@ -61,10 +61,11 @@
             android:name=".PitSurveyActivity"
             android:label="INFA" />
         <activity android:name=".ConstructionActivity" />
-        <activity android:name=".MaintenanceActivity" />
+        <activity android:name=".FaultRemediationActivity" />
         <activity android:name=".AlternateDucts" />
         <activity android:name=".CaptureImagePit" />
-        <activity android:name=".AlternatePits"></activity>
+        <activity android:name=".AlternatePits" />
+        <activity android:name=".EquipmentUpkeep"></activity>
     </application>
 
 </manifest>

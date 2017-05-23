@@ -29,10 +29,8 @@
 
         <ImageButton
             android:id="@+id/eqp_upkeep_img_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
             android:background="@null"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -45,10 +43,8 @@
 
         <ImageButton
             android:id="@+id/fault_remediation_img_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
             android:elevation="14dp"
             android:background="@null"
             android:alpha="0.85"

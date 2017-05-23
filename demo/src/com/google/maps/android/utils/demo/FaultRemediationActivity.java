@@ -3,12 +3,10 @@ package com.google.maps.android.utils.demo;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,16 +27,11 @@ import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonPointStyle;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-public class MaintenanceActivity extends BaseDemoActivity {
+public class FaultRemediationActivity extends BaseDemoActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -133,11 +125,11 @@ public class MaintenanceActivity extends BaseDemoActivity {
         getMap().setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MaintenanceActivity.this);
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(FaultRemediationActivity.this);
                 alertDialog.setTitle("Locate Cable cut");
                 alertDialog.setMessage("Enter Length");
 
-                final EditText input = new EditText(MaintenanceActivity.this);
+                final EditText input = new EditText(FaultRemediationActivity.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
@@ -208,7 +200,7 @@ public class MaintenanceActivity extends BaseDemoActivity {
                                 feature.getProperty("ID").contains("LOC000024269703")||
                                 feature.getProperty("ID").contains("LOC000025168142")||
                                 feature.getProperty("ID").contains("LOC000043519542")){
-                            Toast.makeText(MaintenanceActivity.this, "Run OTDR Trace from DJL", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FaultRemediationActivity.this, "Run OTDR Trace from DJL", Toast.LENGTH_SHORT).show();
                             LatLng djl_loc = new LatLng(-37.74403296, 144.79875594);
                             CameraUpdate d_location = CameraUpdateFactory.newLatLngZoom(djl_loc,25);
                             getMap().animateCamera(d_location);
