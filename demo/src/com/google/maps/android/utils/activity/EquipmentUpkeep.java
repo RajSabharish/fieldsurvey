@@ -1,9 +1,8 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -14,6 +13,7 @@ import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle;
 import com.google.maps.android.data.geojson.GeoJsonPointStyle;
+import com.google.maps.android.utils.demo.R;
 
 import org.json.JSONException;
 

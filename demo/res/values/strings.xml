@@ -15,6 +15,29 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="nav_item_jobs">My Jobs</string>
+    <string name="nav_item_instructions">How to Use</string>
+    <string name="nav_item_ticket">Raise Ticket</string>
+    <string name="nav_item_book_assets">Book Assets</string>
+    <string name="nav_item_right_ow">ROW Request</string>
+    <string name="nav_item_support">Help &amp; Support</string>
+
+    <!-- navigation drawer item labels  -->
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_jobs</item>
+        <item>@string/nav_item_instructions</item>
+        <item>@string/nav_item_ticket</item>
+        <item>@string/nav_item_book_assets</item>
+        <item>@string/nav_item_right_ow</item>
+        <item>@string/nav_item_support</item>
+    </string-array>
+
+    <string name="title_messages">Messages</string>
+    <string name="title_friends">Friends</string>
+    <string name="title_home">Home</string>
 
 
 </resources>

@@ -1,6 +1,4 @@
-package com.google.maps.android.utils.demo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+package com.google.maps.android.utils.activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -20,6 +18,8 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.utils.demo.R;
+
 import android.content.Context;
 /**
  * Created by varada.vamsi on 19/5/2017.

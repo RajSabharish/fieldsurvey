@@ -1,31 +1,29 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-/**
- * Created by varada.vamsi on 19/5/2017.
- */
-public class CaptureImagePit extends AppCompatActivity {
-    public static String pitId,pit_position,selectedValue;
+
+import com.google.maps.android.utils.demo.R;
+
+public class CaptureImageActivity extends Activity {
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
+    public static String DuctId,selectedValue;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_capture_image_pit);
-        Bundle bundle = getIntent().getExtras();
-        pitId = bundle.getString("pitid");
-        pit_position = bundle.getString("pitposition");
-        selectedValue = bundle.getString("selectedRadioIdText");
-        System.out.println(pitId+"pitId"+pit_position+"inside the CaptureImagePitclass");
+        setContentView(R.layout.activity_capture_image);
+        Intent intent = getIntent();
+        DuctId = intent.getStringExtra("ductIdKey");
+        selectedValue = intent.getStringExtra("selectedValue");
         this.imageView = (ImageView)this.findViewById(R.id.imageView1);
         Button photoButton = (Button) this.findViewById(R.id.ugbutton);
         photoButton.setOnClickListener(new View.OnClickListener() {
@@ -42,9 +40,8 @@ public class CaptureImagePit extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImagePit.this);
+                AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImageActivity.this);
                 alert.setTitle("Upload");
-
                 if (selectedValue.equals("Yes"))
                 {
                     alert.setMessage("Image Uploaded");
@@ -53,12 +50,14 @@ public class CaptureImagePit extends AppCompatActivity {
                 }
                 if (selectedValue.equals("No"))
                 {
-                    alert.setMessage("Image Uploaded! Do you want to find alternate Pits ?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+                    alert.setMessage("Image Uploaded! Do you want to find alternate ducts ?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
                 }
 
             }
         });
+
     }
+
     DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
     {
         @Override
@@ -67,15 +66,17 @@ public class CaptureImagePit extends AppCompatActivity {
             switch (which)
             {
                 case DialogInterface.BUTTON_POSITIVE:
-                    Intent i = new Intent(CaptureImagePit.this, AlternatePits.class);
-                    i.putExtra("pitId",pitId);
-                    i.putExtra("pit_position",pit_position);
+                    Intent i = new Intent(CaptureImageActivity.this, AlternateDucts.class);
+                    i.putExtra("id_key",DuctId);
                     startActivity(i);
                     break;
 
             }
         }
     };
+
+
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");

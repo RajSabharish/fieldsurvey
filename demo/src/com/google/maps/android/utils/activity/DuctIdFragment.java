@@ -1,4 +1,4 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 import android.app.Activity;
 import android.support.v4.app.ListFragment;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.google.maps.android.utils.demo.R;
 
 
 /**

@@ -1,6 +1,5 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -9,6 +8,7 @@ import android.widget.ListView;
 
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
+import com.google.maps.android.utils.demo.R;
 
 import org.json.JSONException;
 

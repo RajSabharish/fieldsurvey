@@ -1,9 +1,11 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
+
+import com.google.maps.android.utils.demo.R;
 
 public class splash extends Activity {
 

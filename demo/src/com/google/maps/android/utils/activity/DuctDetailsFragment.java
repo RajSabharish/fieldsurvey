@@ -1,4 +1,4 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 
 import android.app.AlertDialog;
@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import com.google.maps.android.utils.demo.R;
 
 import java.util.ArrayList;
 import java.util.List;

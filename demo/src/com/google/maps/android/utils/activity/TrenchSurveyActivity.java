@@ -1,8 +1,10 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
+import com.google.maps.android.utils.demo.R;
 
 public class TrenchSurveyActivity extends FragmentActivity implements DuctIdFragment.onDuctSelectionListener {
 

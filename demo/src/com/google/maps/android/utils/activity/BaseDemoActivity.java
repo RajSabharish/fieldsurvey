@@ -1,5 +1,5 @@
 
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -20,7 +20,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -29,6 +28,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.location.LocationRequest;
+import com.google.maps.android.utils.demo.R;
+
 import android.Manifest;
 /**
  * Modified by varada.vamsi on 19/5/2017.

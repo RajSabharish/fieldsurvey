@@ -1,4 +1,4 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,6 +26,7 @@ import com.google.maps.android.data.Feature;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonPointStyle;
+import com.google.maps.android.utils.demo.R;
 
 import org.json.JSONException;
 

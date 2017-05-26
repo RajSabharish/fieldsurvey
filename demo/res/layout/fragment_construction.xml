@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.google.maps.android.utils.demo.SurveyFragment"
+    tools:context="com.google.maps.android.utils.activity.SurveyFragment"
     android:background="@drawable/background_2">
 
     <!-- TODO: Update blank fragment layout -->

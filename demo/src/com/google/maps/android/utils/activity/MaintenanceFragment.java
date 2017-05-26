@@ -1,4 +1,4 @@
-package com.google.maps.android.utils.demo;
+package com.google.maps.android.utils.activity;
 
 
 import android.app.AlertDialog;
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.google.maps.android.utils.demo.R;
 
 
 public class MaintenanceFragment extends Fragment {
