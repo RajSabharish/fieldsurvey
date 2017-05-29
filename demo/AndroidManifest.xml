@@ -66,7 +66,8 @@
         <activity android:name="com.google.maps.android.utils.activity.CaptureImagePit" />
         <activity android:name="com.google.maps.android.utils.activity.AlternatePits" />
         <activity android:name="com.google.maps.android.utils.activity.EquipmentUpkeep" />
-        <activity android:name="com.google.maps.android.utils.activity.ShowPhotos"></activity>
+        <activity android:name="com.google.maps.android.utils.activity.ShowPhotos" />
+        <activity android:name="com.google.maps.android.utils.activity.ShowPitPhotos"></activity>
     </application>
 
 </manifest>

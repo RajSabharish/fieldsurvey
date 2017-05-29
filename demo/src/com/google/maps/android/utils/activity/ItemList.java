@@ -10,5 +10,7 @@ import java.util.ArrayList;
 
 public class ItemList {
     static ArrayList<Bitmap> imageItems = new ArrayList<>();
+    static ArrayList<Bitmap> imageItems1 = new ArrayList<>();
     static ArrayList<ImageItem> imageItem1 = new ArrayList<>();
+    static ArrayList<ImageItem> imageItem2 = new ArrayList<>();
 }
