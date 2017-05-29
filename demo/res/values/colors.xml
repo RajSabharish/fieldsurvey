@@ -9,6 +9,8 @@
         <color name="colorAccent">#ef8181</color>
         <color name="indigo">#4b0082</color>
         <color name="pink">#ffe22b</color>
+        <color name="blue">#00abea</color>
+        <color name="white">#ffffff</color>
 
 
 </resources>

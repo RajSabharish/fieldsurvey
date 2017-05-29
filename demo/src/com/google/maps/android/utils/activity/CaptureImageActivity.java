@@ -25,8 +25,7 @@ public class CaptureImageActivity extends Activity {
         DuctId = intent.getStringExtra("ductIdKey");
         selectedValue = intent.getStringExtra("selectedValue");
         this.imageView = (ImageView)this.findViewById(R.id.imageView1);
-        Button photoButton = (Button) this.findViewById(R.id.ugbutton);
-        photoButton.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -41,18 +40,8 @@ public class CaptureImageActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImageActivity.this);
-                alert.setTitle("Upload");
-                if (selectedValue.equals("Yes"))
-                {
-                    alert.setMessage("Image Uploaded");
-                    alert.setPositiveButton("OK",null);
-                    alert.show();
-                }
-                if (selectedValue.equals("No"))
-                {
-                    alert.setMessage("Image Uploaded! Do you want to find alternate ducts ?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
-                }
-
+                alert.setTitle("Camera");
+                alert.setMessage("Images Captured! Do you want to take more photos ?").setPositiveButton("No", dialogClickListener).setNegativeButton("Yes", dialogClickListener).show();
             }
         });
 
@@ -66,9 +55,12 @@ public class CaptureImageActivity extends Activity {
             switch (which)
             {
                 case DialogInterface.BUTTON_POSITIVE:
-                    Intent i = new Intent(CaptureImageActivity.this, AlternateDucts.class);
-                    i.putExtra("id_key",DuctId);
+                    Intent i = new Intent(CaptureImageActivity.this, ShowPhotos.class);
+                    i.putExtra("ductIdKey",DuctId);
+                    i.putExtra("selectedValue",selectedValue);
                     startActivity(i);
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
                     break;
 
             }
@@ -79,8 +71,8 @@ public class CaptureImageActivity extends Activity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(photo);
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            ItemList.imageItems.add(thumbnail);
         }
     }
 }

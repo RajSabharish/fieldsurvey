@@ -27,7 +27,6 @@ public class AlternateDucts extends BaseDemoActivity {
     }
 
     public void retrieveFileFromResource() {
-        System.out.println("inside the Showlistclass");
         setContentView(R.layout.activity_alternate_ducts);
         Bundle scrollingdata = getIntent().getExtras();
         String id = scrollingdata.getString("id_key");
@@ -64,7 +63,6 @@ public class AlternateDucts extends BaseDemoActivity {
         List<String> myList = new ArrayList<String>();
         for (GeoJsonFeature feature : layer.getFeatures()) {
             if (trench_id.equals(feature.getProperty("TRENCH_ID"))) {
-                System.out.println("inside the alternate pit condition");
                 alternate_pits = feature.getProperty("ID");
                 myList.add(alternate_pits);
                 myList.remove(id);
@@ -98,15 +96,11 @@ public class AlternateDucts extends BaseDemoActivity {
             for (GeoJsonFeature feature : layer.getFeatures()) {
                 if (SizedList.get(i).equals(feature.getProperty("ID"))) {
                     alternate_pits_Utilization = feature.getProperty("PERCENTAGE_FULL");
-                    System.out.println(SizedList.get(i)+"for utilization"+alternate_pits_Utilization);
                     if (Float.valueOf(alternate_pits_Utilization) <= 40.0)
                     {
                         UtilizationList.add(SizedList.get(i));
                     }
-
-
                 }
-
             }
         }
         CheckMaterial((ArrayList<String>) UtilizationList,layer);
