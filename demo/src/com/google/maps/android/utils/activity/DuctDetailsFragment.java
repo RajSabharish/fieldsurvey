@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -44,7 +45,7 @@ public class DuctDetailsFragment extends Fragment{
             mCurrentPosition = savedInstanceState.getInt(ARG_POSITION);
         }
 
-        return inflater.inflate(R.layout.details_view, container, false);
+        return inflater.inflate(R.layout.fragment_duct_details, container, false);
 
     }
 
@@ -60,7 +61,7 @@ public class DuctDetailsFragment extends Fragment{
         }
     }
 
-    public void updateDetailsView(int position) {
+    public void updateDetailsView(final int position) {
 
         ownerSpinner = (Spinner)getActivity().findViewById(R.id.ownerSpinner);
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(),
@@ -128,10 +129,37 @@ public class DuctDetailsFragment extends Fragment{
             System.out.println(ListItems.DuctId.get(i));
         }
 
+        ImageButton incident_button = (ImageButton) getActivity().findViewById(R.id.incidentButton);
 
+        final DialogInterface.OnClickListener dialogClickListener_incident = new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                switch (which)
+                {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Intent myIntent = new Intent(getActivity(), RaiseAssetIncidentActivity.class);
+                        myIntent.putExtra("AssetID", ListItems.DuctId.get(position));
+                        getActivity().startActivity(myIntent);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
 
-
-
+        incident_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+                    public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                alert.setTitle("Incident");
+                alert.setMessage("Do you want to report an incident?");
+                alert.setPositiveButton("YES",dialogClickListener_incident);
+                alert.setNegativeButton("NO",dialogClickListener_incident);
+                alert.show();
+            }
+        });
 
         Button uploadButton = (Button) getActivity().findViewById(R.id.nextButton);
         uploadButton.setOnClickListener(new View.OnClickListener() {
@@ -164,8 +192,7 @@ public class DuctDetailsFragment extends Fragment{
             {
                 case DialogInterface.BUTTON_POSITIVE:
                     Intent myIntent = new Intent(getActivity(), CaptureImageActivity.class);
-                    myIntent.putExtra("ductIdKey", ductid);
-                    myIntent.putExtra("selectedValue", selectedRadioIdvalue);
+                    myIntent.putExtra("AssetId", ductid);
                     getActivity().startActivity(myIntent);
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:

@@ -39,7 +39,7 @@ public class MaintenanceFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("Equipement Upkeep");
-                alertDialog.setMessage("Enter SAM CODE");
+                alertDialog.setMessage("Enter Area Code");
                 final EditText input = new EditText(getActivity());
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -77,7 +77,7 @@ public class MaintenanceFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("FAULT MAINTENANCE");
-                alertDialog.setMessage("Enter SAM CODE");
+                alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(

@@ -49,7 +49,7 @@ public class SurveyFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("AERIAL SURVEY");
-                alertDialog.setMessage("Enter SAM CODE");
+                alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
                 input.setMaxLines(1);
@@ -89,7 +89,7 @@ public class SurveyFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("UG SURVEY");
-                alertDialog.setMessage("Enter SAM CODE");
+                alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -134,7 +134,7 @@ public class SurveyFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("COPPER EQUIPMENT SURVEY");
-                alertDialog.setMessage("Enter SAM CODE");
+                alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -179,7 +179,7 @@ public class SurveyFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("FIBER EQUIPMENT SURVEY");
-                alertDialog.setMessage("Enter SAM CODE");
+                alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(

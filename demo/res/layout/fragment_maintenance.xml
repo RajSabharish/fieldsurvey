@@ -34,26 +34,24 @@
             android:background="@null"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@drawable/rsz_equipmentupkeep_final"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="39dp"
-            android:alpha="0.85"
-            android:elevation="14dp"
-            app:layout_constraintHorizontal_bias="0.0" />
+            app:srcCompat="@drawable/rsz_equipment_upkeep_final"
+            android:layout_marginTop="0dp"
+            android:elevation="20dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/fault_remediation_img_button" />
 
         <ImageButton
             android:id="@+id/fault_remediation_img_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:elevation="14dp"
+            android:elevation="20dp"
             android:background="@null"
-            android:alpha="0.85"
-            android:layout_marginTop="2dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eqp_upkeep_img_button"
-            app:srcCompat="@drawable/rsz_faultremediation_final" />
+            app:srcCompat="@drawable/rsz_fault_remediation_final"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="33dp" />
 
     </android.support.constraint.ConstraintLayout>
 

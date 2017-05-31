@@ -1,11 +1,14 @@
 
 package com.google.maps.android.utils.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.solver.widgets.WidgetContainer;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -56,6 +59,23 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
     @Override
     public void onDrawerItemSelected(View view, int position) {
+        displayView(position);
+    }
+
+    private void displayView(int position) {
+        Fragment fragment = null;
+        String title = getString(R.string.app_name);
+        switch (position) {
+            case 2:
+
+                break;
+            case 3:
+                Intent newIntent = new Intent(MainActivity.this,RaiseTicketActivity.class);
+                this.startActivity(newIntent);
+                break;
+            default:
+                break;
+        }
 
     }
 

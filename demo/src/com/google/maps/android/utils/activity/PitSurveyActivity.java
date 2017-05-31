@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -135,7 +136,40 @@ public class PitSurveyActivity extends BaseDemoActivity{
             }
         });
 
+        ImageButton incident_button = (ImageButton) this.findViewById(R.id.incidentButton);
+
+        final DialogInterface.OnClickListener dialogClickListener_incident = new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                switch (which)
+                {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Intent myIntent = new Intent(PitSurveyActivity.this, RaiseAssetIncidentActivity.class);
+                        myIntent.putExtra("AssetID", pitId);
+                        PitSurveyActivity.this.startActivity(myIntent);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        incident_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(PitSurveyActivity.this);
+                alert.setTitle("Incident");
+                alert.setMessage("Do you want to report an incident?");
+                alert.setPositiveButton("YES",dialogClickListener_incident);
+                alert.setNegativeButton("NO",dialogClickListener_incident);
+                alert.show();
+            }
+        });
+
     }
+
 
     DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
     {
@@ -158,9 +192,6 @@ public class PitSurveyActivity extends BaseDemoActivity{
             }
         }
     };
-
-
-
 
 
     @Override

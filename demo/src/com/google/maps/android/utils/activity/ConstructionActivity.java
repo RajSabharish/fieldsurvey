@@ -139,6 +139,45 @@ public class ConstructionActivity extends BaseDemoActivity {
                 }
             });
 
+            ImageButton information_button = (ImageButton) findViewById(R.id.information_button);
+
+            information_button.setOnClickListener(new View.OnClickListener(){
+                AlertDialog dialog;
+                @Override
+                public void onClick(View v){
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ConstructionActivity.this);
+                    builder.setTitle("Information");
+                    String sam = "Area Code : 3KGP-01";
+                    String designer = "Designer : Manoj";
+                    String manager = "Manager : Sangeetha";
+                    builder.setMessage(sam + "\n" + designer + "\n" + manager);
+                    builder.setPositiveButton("Call",new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id){}
+
+                    });
+
+                    builder.setNegativeButton("Message",new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id){}
+
+                    });
+
+                    builder.setNeutralButton("Cancel",new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog,int id){}
+                    });
+                    dialog = builder.create();
+                    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+                    dialog.show();
+
+                }
+            });
+
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -230,7 +269,6 @@ public class ConstructionActivity extends BaseDemoActivity {
             lineStringStyle.setColor(Color.GREEN);
             lineStringStyle.setClickable(true);
             feature.setLineStringStyle(lineStringStyle);
-
         }
     }
 
