@@ -72,6 +72,7 @@ public class EquipmentUpkeep extends BaseDemoActivity {
             Bitmap djl_im = BitmapFactory.decodeResource(getResources(), R.drawable.djl);
             Bitmap odf_im = BitmapFactory.decodeResource(getResources(), R.drawable.fan);
             Bitmap fus_im = BitmapFactory.decodeResource(getResources(), R.drawable.fuse);
+            Bitmap alert_im = BitmapFactory.decodeResource(getResources(), R.drawable.rsz_alert);
             GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
             if(feature.hasProperty("EQUIPMENT_ID"))
             {
@@ -122,6 +123,14 @@ public class EquipmentUpkeep extends BaseDemoActivity {
                 {
                     System.out.println((feature.getProperty("EQUIPMENT_ID"))+"inside the FUS");
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(fus_im));
+                    pointStyle.setTitle(feature.getProperty("TYPE"));
+                    pointStyle.setSnippet(feature.getProperty("EQUIPMENT_ID"));
+                }
+
+                if((feature.getProperty("EQUIPMENT_ID").contains("3KGP-01-02-MPT-001"))&&(feature.getProperty("EQUIPMENT_ID").contains("3KGP-01-01-EBR-002")))
+                {
+                    System.out.println((feature.getProperty("EQUIPMENT_ID"))+"inside the FNO");
+                    pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(alert_im));
                     pointStyle.setTitle(feature.getProperty("TYPE"));
                     pointStyle.setSnippet(feature.getProperty("EQUIPMENT_ID"));
                 }

@@ -2,10 +2,14 @@ package com.google.maps.android.utils.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -150,19 +154,27 @@ public class ConstructionActivity extends BaseDemoActivity {
                     builder.setTitle("Information");
                     String sam = "Area Code : 3KGP-01";
                     String designer = "Designer : Manoj";
-                    String manager = "Manager : Sangeetha";
-                    builder.setMessage(sam + "\n" + designer + "\n" + manager);
+                    builder.setMessage(sam + "\n" + designer + "\n");
                     builder.setPositiveButton("Call",new DialogInterface.OnClickListener()
                     {
                         @Override
-                        public void onClick(DialogInterface dialog, int id){}
+                        public void onClick(DialogInterface dialog, int id){
+                            Intent intent = new Intent(Intent.ACTION_CALL);
+
+                            intent.setData(Uri.parse("tel:" + "8489733394"));
+                            ConstructionActivity.this.startActivity(intent);
+                        }
 
                     });
 
                     builder.setNegativeButton("Message",new DialogInterface.OnClickListener()
                     {
                         @Override
-                        public void onClick(DialogInterface dialog, int id){}
+                        public void onClick(DialogInterface dialog, int id){
+                            Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "sms:" + "8489733394"));
+                            intent.putExtra( "sms_body", "Hi" );
+                            startActivity(intent);
+                        }
 
                     });
 
@@ -171,9 +183,42 @@ public class ConstructionActivity extends BaseDemoActivity {
                         @Override
                         public void onClick(DialogInterface dialog,int id){}
                     });
+
+
                     dialog = builder.create();
                     dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
                     dialog.show();
+
+                    dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+
+                        @Override
+                        public void onShow(DialogInterface dialogInterface) {
+                            Button button_call = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                            Drawable drawable_call_img = getDrawable(android.R.drawable.ic_menu_call);
+                            Drawable drawable_msg_img = getDrawable(android.R.drawable.stat_notify_chat);
+
+                            // if you do the following it will be left aligned, doesn't look
+                            // correct
+                             button_call.setCompoundDrawablesWithIntrinsicBounds(android.R.drawable.ic_menu_call,
+                             0, 0, 0);
+
+
+
+                            // set the bounds to place the drawable a bit right
+                           // drawable_call_img.setBounds((int) (drawable_call_img.getIntrinsicWidth() * 0.5),
+                           //         0, (int) (drawable_call_img.getIntrinsicWidth() * 1.5),
+                           //         drawable_call_img.getIntrinsicHeight());
+                           // button_call.setCompoundDrawables(drawable_call_img, null, null, null);
+
+                          //  drawable_msg_img.setBounds((int) (drawable_msg_img.getIntrinsicWidth() * 0.5),
+                          //          0, (int) (drawable_msg_img.getIntrinsicWidth() * 1.5),
+                          //          drawable_msg_img.getIntrinsicHeight());
+                          //  button_call.setCompoundDrawables(drawable_call_img, null, null, null);
+
+                            // could modify the placement more here if desired
+                            // button.setCompoundDrawablePadding();
+                        }
+                    });
 
                 }
             });
