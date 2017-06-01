@@ -189,37 +189,6 @@ public class ConstructionActivity extends BaseDemoActivity {
                     dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
                     dialog.show();
 
-                    dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-
-                        @Override
-                        public void onShow(DialogInterface dialogInterface) {
-                            Button button_call = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-                            Drawable drawable_call_img = getDrawable(android.R.drawable.ic_menu_call);
-                            Drawable drawable_msg_img = getDrawable(android.R.drawable.stat_notify_chat);
-
-                            // if you do the following it will be left aligned, doesn't look
-                            // correct
-                             button_call.setCompoundDrawablesWithIntrinsicBounds(android.R.drawable.ic_menu_call,
-                             0, 0, 0);
-
-
-
-                            // set the bounds to place the drawable a bit right
-                           // drawable_call_img.setBounds((int) (drawable_call_img.getIntrinsicWidth() * 0.5),
-                           //         0, (int) (drawable_call_img.getIntrinsicWidth() * 1.5),
-                           //         drawable_call_img.getIntrinsicHeight());
-                           // button_call.setCompoundDrawables(drawable_call_img, null, null, null);
-
-                          //  drawable_msg_img.setBounds((int) (drawable_msg_img.getIntrinsicWidth() * 0.5),
-                          //          0, (int) (drawable_msg_img.getIntrinsicWidth() * 1.5),
-                          //          drawable_msg_img.getIntrinsicHeight());
-                          //  button_call.setCompoundDrawables(drawable_call_img, null, null, null);
-
-                            // could modify the placement more here if desired
-                            // button.setCompoundDrawablePadding();
-                        }
-                    });
-
                 }
             });
 

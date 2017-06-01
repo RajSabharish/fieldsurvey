@@ -21,8 +21,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -43,6 +46,50 @@ public class SurveyActivity extends BaseDemoActivity {
         copper_eqp_state =extras.getBoolean("copperstate");
         fiber_eqp_state =extras.getBoolean("fiberstate");
         ug_state=extras.getBoolean("ugstate");
+        ImageButton information_button = (ImageButton) findViewById(R.id.information_button);
+
+        information_button.setOnClickListener(new View.OnClickListener() {
+            AlertDialog dialog;
+
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(SurveyActivity.this);
+                builder.setTitle("Information");
+                String sam = "Area Code : 3KGP-01";
+                String designer = "Designer : Manoj";
+                builder.setMessage(sam + "\n" + designer + "\n");
+                builder.setPositiveButton("Call", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Intent.ACTION_CALL);
+
+                        intent.setData(Uri.parse("tel:" + "8489733394"));
+                        SurveyActivity.this.startActivity(intent);
+                    }
+
+                });
+
+                builder.setNegativeButton("Message", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + "8489733394"));
+                        intent.putExtra("sms_body", "Hi");
+                        startActivity(intent);
+                    }
+
+                });
+
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                dialog = builder.create();
+                dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+                dialog.show();
+            }
+        });
 
     }
 
@@ -100,6 +147,7 @@ public class SurveyActivity extends BaseDemoActivity {
                     }
                 }
             }
+
             addGeoJsonLayerToMap(layer_temp);
 
 
@@ -108,6 +156,8 @@ public class SurveyActivity extends BaseDemoActivity {
         } catch (JSONException e) {
             Log.e(mLogTag, "GeoJSON file could not be converted to a JSONObject");
         }
+
+
     }
 
     public void addtolist(String id){
@@ -377,5 +427,7 @@ public class SurveyActivity extends BaseDemoActivity {
         });
 
     }
+
+
 
 }
