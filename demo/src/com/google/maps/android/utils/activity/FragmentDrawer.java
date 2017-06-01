@@ -1,7 +1,4 @@
 package com.google.maps.android.utils.activity;
-/**
- * Created by Ravi on 29/07/15.
- */
 
 import android.content.Context;
 import android.os.Bundle;

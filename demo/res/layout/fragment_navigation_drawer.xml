@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="22dp"
             android:layout_toEndOf="@+id/imageView4"
-            android:text="SAMEER"
+            android:text="SANGEETHA"
             android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:textSize="18sp" />
 
