@@ -69,7 +69,8 @@
         <activity android:name="com.google.maps.android.utils.activity.EquipmentUpkeep" />
         <activity android:name="com.google.maps.android.utils.activity.RaiseTicketActivity" />
         <activity android:name="com.google.maps.android.utils.activity.RaiseAssetIncidentActivity" />
-        <activity android:name="com.google.maps.android.utils.activity.BookAssetsActivity"></activity>
+        <activity android:name="com.google.maps.android.utils.activity.BookAssetsActivity" />
+        <activity android:name="com.google.maps.android.utils.activity.MyJob"></activity>
     </application>
 
 </manifest>

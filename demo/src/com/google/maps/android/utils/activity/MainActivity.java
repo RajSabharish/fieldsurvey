@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         Fragment fragment = null;
         String title = getString(R.string.app_name);
         switch (position) {
+            case 1:
+                Intent Myjob = new Intent(MainActivity.this,MyJob.class);
+                this.startActivity(Myjob);
+                break;
             case 4:
                 Intent newIntent_book = new Intent(MainActivity.this,BookAssetsActivity.class);
                 this.startActivity(newIntent_book);
