@@ -62,23 +62,21 @@ public class SurveyFragment extends Fragment {
                 alertDialog.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                String samcode = input.getText().toString();
+                                String samcode = input.getText().toString().toUpperCase();
+                                System.out.println(samcode+"samcode");
                                 if ((samcode.trim()).equals("3KGP-01")) {
                                     Toast.makeText(getActivity(),"No Aerial network data found for this SAM. Please select a different survey", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(getActivity(),"No details found for this SAM.. Enter a different SAM Code", Toast.LENGTH_SHORT).show();
-
                                 }
                             }
                         });
-
                 alertDialog.setNegativeButton("NO",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
                         });
-
                 alertDialog.show();
             }
 
@@ -101,7 +99,7 @@ public class SurveyFragment extends Fragment {
                 alertDialog.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                String samcode = input.getText().toString();
+                                String samcode = input.getText().toString().toUpperCase();
                                 if ((samcode.trim()).equals("3KGP-01")) {
                                     Intent intent = new Intent(getActivity(), SurveyActivity.class);
                                     Bundle extras = new Bundle();
@@ -146,7 +144,7 @@ public class SurveyFragment extends Fragment {
                 alertDialog.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                String samcode = input.getText().toString();
+                                String samcode = input.getText().toString().toUpperCase();
                                 if ((samcode.trim()).equals("3KGP-01")) {
                                     Intent intent = new Intent(getActivity(), SurveyActivity.class);
                                     Bundle extras = new Bundle();
@@ -191,7 +189,7 @@ public class SurveyFragment extends Fragment {
                 alertDialog.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                String samcode = input.getText().toString();
+                                String samcode = input.getText().toString().toUpperCase();
                                 if ((samcode.trim()).equals("3KGP-01")) {
                                     Intent intent = new Intent(getActivity(), SurveyActivity.class);
                                     Bundle extras = new Bundle();

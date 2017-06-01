@@ -49,7 +49,7 @@ public class MaintenanceFragment extends Fragment {
                 alertDialog.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                String samcode = input.getText().toString();
+                                String samcode = input.getText().toString().toUpperCase();
                                 if ((samcode.trim()).equals("3KGP-01")) {
                                     Intent intent = new Intent(getActivity(), EquipmentUpkeep.class);
                                     startActivity(intent);
@@ -89,7 +89,7 @@ public class MaintenanceFragment extends Fragment {
                 alertDialog.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                String samcode = input.getText().toString();
+                                String samcode = input.getText().toString().toUpperCase();
                                 if ((samcode.trim()).equals("3KGP-01")) {
                                     Intent intent = new Intent(getActivity(), FaultRemediationActivity.class);
                                     startActivity(intent);

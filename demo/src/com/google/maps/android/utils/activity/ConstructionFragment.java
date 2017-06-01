@@ -37,7 +37,7 @@ public class ConstructionFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    if ((SamCode.getText().toString().trim()).equals("3KGP-01")) {
+                    if ((SamCode.getText().toString().toUpperCase().trim()).equals("3KGP-01")) {
                         Intent myIntent = new Intent(getActivity(), ConstructionActivity.class);
                         getActivity().startActivity(myIntent);
 
