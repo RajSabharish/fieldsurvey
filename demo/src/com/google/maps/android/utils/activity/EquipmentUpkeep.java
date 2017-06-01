@@ -72,7 +72,7 @@ public class EquipmentUpkeep extends BaseDemoActivity {
             Bitmap djl_im = BitmapFactory.decodeResource(getResources(), R.drawable.djl);
             Bitmap odf_im = BitmapFactory.decodeResource(getResources(), R.drawable.fan);
             Bitmap fus_im = BitmapFactory.decodeResource(getResources(), R.drawable.fuse);
-            Bitmap alert_im = BitmapFactory.decodeResource(getResources(), R.drawable.rsz_alert);
+            Bitmap alert_im = BitmapFactory.decodeResource(getResources(), R.drawable.incident_note);
             GeoJsonPointStyle pointStyle = new GeoJsonPointStyle();
             if(feature.hasProperty("EQUIPMENT_ID"))
             {
@@ -131,8 +131,8 @@ public class EquipmentUpkeep extends BaseDemoActivity {
                 {
                     System.out.println((feature.getProperty("EQUIPMENT_ID"))+"inside the FNO");
                     pointStyle.setIcon(BitmapDescriptorFactory.fromBitmap(alert_im));
-                    pointStyle.setTitle(feature.getProperty("TYPE"));
-                    pointStyle.setSnippet(feature.getProperty("EQUIPMENT_ID"));
+                    pointStyle.setTitle("Warning !! Equipment may be submerged in water");
+                    pointStyle.setSnippet(feature.getProperty("TYPE"));
                 }
 
             }
