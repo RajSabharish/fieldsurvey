@@ -170,7 +170,6 @@ public class DuctDetailsFragment extends Fragment{
                 int selectedRadioId = radioDecissionGroup.getCheckedRadioButtonId();
                 RadioButton radioButton = (RadioButton)getActivity().findViewById(selectedRadioId);
                 selectedRadioIdvalue = (String) radioButton.getText();
-                System.out.println(selectedRadioIdvalue+"selectedRadioId");
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                 alert.setTitle("Save");
                 alert.setMessage("Are you sure to proceed?");
@@ -193,6 +192,7 @@ public class DuctDetailsFragment extends Fragment{
                 case DialogInterface.BUTTON_POSITIVE:
                     Intent myIntent = new Intent(getActivity(), CaptureImageActivity.class);
                     myIntent.putExtra("AssetId", ductid);
+                    myIntent.putExtra("selectedValue", selectedRadioIdvalue);
                     getActivity().startActivity(myIntent);
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:

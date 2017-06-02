@@ -29,7 +29,7 @@ public class CaptureImageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture_image);
         Intent intent = getIntent();
-        DuctId = intent.getStringExtra("ductIdKey");
+        DuctId = intent.getStringExtra("AssetId");
         selectedValue = intent.getStringExtra("selectedValue");
         gridView = (GridView) findViewById(R.id.gridView);
         gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData());
