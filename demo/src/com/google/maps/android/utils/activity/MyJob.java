@@ -39,6 +39,10 @@ public class MyJob extends AppCompatActivity {
         tv1.setText("  Task  ");
         tv1.setTextColor(Color.BLACK);
         tbrow0.addView(tv1);
+        TextView tv4 = new TextView(this);
+        tv4.setText("  EquipmentType  ");
+        tv4.setTextColor(Color.BLACK);
+        tbrow0.addView(tv4);
         TextView tv2 = new TextView(this);
         tv2.setText("  Area  ");
         tv2.setTextColor(Color.BLACK);
@@ -47,6 +51,7 @@ public class MyJob extends AppCompatActivity {
         tv3.setText("  Status  ");
         tv3.setTextColor(Color.BLACK);
         tbrow0.addView(tv3);
+
         stk.addView(tbrow0);
         for (int i = 0; i < PresentJob.size(); i++) {
             TableRow tbrow = new TableRow(this);
@@ -62,6 +67,12 @@ public class MyJob extends AppCompatActivity {
             t2v.setGravity(Gravity.RIGHT);
             t2v.setPadding(10,10,20,10);
             tbrow.addView(t2v);
+            TextView t5v = new TextView(this);
+            t5v.setText(PresentJob.get(i).getEquipmentType());
+            t5v.setTextColor(Color.BLACK);
+            t5v.setPadding(10,10,0,10);
+            t5v.setGravity(Gravity.CENTER);
+            tbrow.addView(t5v);
             TextView t3v = new TextView(this);
             t3v.setText(PresentJob.get(i).getTask());
             t3v.setTextColor(Color.BLACK);
@@ -74,6 +85,7 @@ public class MyJob extends AppCompatActivity {
             t4v.setPadding(10,10,0,10);
             t4v.setGravity(Gravity.RIGHT);
             tbrow.addView(t4v);
+
             stk.addView(tbrow);
         }
     }
