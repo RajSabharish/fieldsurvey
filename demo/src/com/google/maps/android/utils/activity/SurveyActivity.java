@@ -46,8 +46,15 @@ public class SurveyActivity extends BaseDemoActivity {
         copper_eqp_state =extras.getBoolean("copperstate");
         fiber_eqp_state =extras.getBoolean("fiberstate");
         ug_state=extras.getBoolean("ugstate");
+        ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
+        home_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIntent_book = new Intent(SurveyActivity.this,MainActivity.class);
+                startActivity(newIntent_book);
+            }
+        });
         ImageButton information_button = (ImageButton) findViewById(R.id.information_button);
-
         information_button.setOnClickListener(new View.OnClickListener() {
             AlertDialog dialog;
 

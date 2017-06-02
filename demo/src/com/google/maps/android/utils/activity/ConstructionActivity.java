@@ -77,6 +77,14 @@ public class ConstructionActivity extends BaseDemoActivity {
             }
 
             addGeoJsonLayerToMap(layer_temp);
+            ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
+            home_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent newIntent_book = new Intent(ConstructionActivity.this,MainActivity.class);
+                    startActivity(newIntent_book);
+                }
+            });
             ImageButton layer_button = (ImageButton) findViewById(R.id.layer_button);
 
             layer_button.setOnClickListener(new View.OnClickListener()
