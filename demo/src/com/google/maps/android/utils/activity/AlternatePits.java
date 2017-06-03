@@ -1,6 +1,9 @@
 package com.google.maps.android.utils.activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +42,14 @@ public class AlternatePits extends BaseDemoActivity {
     }
 
     public void retrieveFileFromResource() {
+        ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
+        home_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIntent_book = new Intent(AlternatePits.this,MainActivity.class);
+                startActivity(newIntent_book);
+            }
+        });
 
 
         Bundle scrollingdata = getIntent().getExtras();

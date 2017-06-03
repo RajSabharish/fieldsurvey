@@ -1,8 +1,11 @@
 package com.google.maps.android.utils.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -27,6 +30,14 @@ public class AlternateDucts extends BaseDemoActivity {
     }
 
     public void retrieveFileFromResource() {
+        ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
+        home_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIntent_book = new Intent(AlternateDucts.this,MainActivity.class);
+                startActivity(newIntent_book);
+            }
+        });
         setContentView(R.layout.activity_alternate_ducts);
         Bundle scrollingdata = getIntent().getExtras();
         String id = scrollingdata.getString("id_key");
