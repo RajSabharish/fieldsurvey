@@ -2,21 +2,27 @@ package com.google.maps.android.utils.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.maps.android.utils.adapter.GridViewAdapter;
 import com.google.maps.android.utils.demo.R;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by varada.vamsi on 19/5/2017.
@@ -28,6 +34,10 @@ public class CaptureImagePit extends AppCompatActivity {
     private GridView gridView;
     private GridViewAdapter gridAdapter;
     ImageItem item;
+    private ImageButton btnSpeak;
+    private String Speechvalue;
+    TextToSpeech t1;
+    private final int REQ_CODE_SPEECH_INPUT = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("inside the capture pit class");
@@ -37,6 +47,13 @@ public class CaptureImagePit extends AppCompatActivity {
         pitId = bundle.getString("pitid");
         pit_position = bundle.getString("pitposition");
         selectedValue = bundle.getString("selectedRadioIdText");
+        btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
         gridView = (GridView) findViewById(R.id.gridView1);
         gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, getData());
         gridView.setAdapter(gridAdapter);
@@ -66,16 +83,9 @@ public class CaptureImagePit extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImagePit.this);
                 alert.setTitle("Camera Upload");
-                if (selectedValue.equals("Yes"))
-                {
-                    alert.setMessage("Image Uploaded ! You may close the application");
-                    alert.setPositiveButton("OK",null);
-                    alert.show();
-                }
-                if (selectedValue.equals("No"))
-                {
-                    alert.setMessage("Images Uploaded! Do you want to see the alternate pits").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
-                }
+                alert.setMessage("Image Uploaded ! You may close the application");
+                alert.setPositiveButton("OK",null);
+                alert.show();
             }
         });
     }
@@ -125,13 +135,84 @@ public class CaptureImagePit extends AppCompatActivity {
             }
         }
     };
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            ItemList.imageItems1.add(thumbnail);
+    /**
+     * Showing google speech input dialog
+     * */
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
         }
+    }
+    /**
+     * Receiving speech input
+     * */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    System.out.println(result.get(0)+"text got from speech");
+                    Speechvalue = result.get(0).toString();
+                    Speack();
+                    if(Speechvalue != null && !Speechvalue.isEmpty()) {
+                        String[] words = Speechvalue.split("\\s");
+                        for(String w:words){
+                            if (w.equals("alternate"))
+                            {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImagePit.this);
+                                alert.setTitle("Camera Upload");
+                                alert.setMessage("Images Uploaded! Do you want to see the alternate pits").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+            case CAMERA_REQUEST:
+            {
+                if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                    Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                    ItemList.imageItems1.add(thumbnail);
+                }
+            }
+
+        }
+    }
+    public void onPause() {
+        if (t1 != null) {
+            t1.stop();
+            t1.shutdown();
+        }
+        super.onPause();
+    }
+    public void Speack()
+    {
+        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    t1.setLanguage(Locale.UK);
+                    t1.speak("Images Uploaded! Do you want to see the alternate pits", TextToSpeech.QUEUE_FLUSH, null);
+                }
+            }
+        });
     }
 }

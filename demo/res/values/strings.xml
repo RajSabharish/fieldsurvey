@@ -12,7 +12,8 @@
     <string name="title_activity_video">Demo Video</string>
     <string name="title_activity_trench_survey">DuctDetails</string>
     <string name="title_activity_splash">splash</string>
-
+    <string name="speech_prompt">Say something&#8230;</string>
+    <string name="speech_not_supported">Sorry! Your device doesn\'t support speech input</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drawer_open">Open</string>
