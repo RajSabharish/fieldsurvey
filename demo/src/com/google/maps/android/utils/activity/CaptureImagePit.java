@@ -172,11 +172,37 @@ public class CaptureImagePit extends AppCompatActivity {
                     if(Speechvalue != null && !Speechvalue.isEmpty()) {
                         String[] words = Speechvalue.split("\\s");
                         for(String w:words){
+                            System.out.println(words+"words");
                             if (w.equals("alternate"))
                             {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImagePit.this);
                                 alert.setTitle("Camera Upload");
                                 alert.setMessage("Images Uploaded! Do you want to see the alternate pits").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+                            }
+                            if (w.equals("name"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("My name is Intellegent network field assistant Version 1.0", TextToSpeech.QUEUE_FLUSH, null);
+                                        }
+                                    }
+                                });
+                            }
+                            if (w.equals("designation"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Network field engineer", TextToSpeech.QUEUE_FLUSH, null);
+                                        }
+                                    }
+                                });
+
                             }
                         }
                     }
@@ -210,7 +236,7 @@ public class CaptureImagePit extends AppCompatActivity {
             public void onInit(int status) {
                 if (status != TextToSpeech.ERROR) {
                     t1.setLanguage(Locale.UK);
-                    t1.speak("Images Uploaded! Do you want to see the alternate pits", TextToSpeech.QUEUE_FLUSH, null);
+                    t1.speak("Do you want to see the alternate pits", TextToSpeech.QUEUE_FLUSH, null);
                 }
             }
         });
