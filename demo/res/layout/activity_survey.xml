@@ -17,21 +17,27 @@
             android:id="@+id/home_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="center|bottom"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="99dp"
             android:padding="50dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
             android:src="@drawable/home"
             />
-
+        <ImageButton
+            android:id="@+id/btnSpeak"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="52dp"
+            android:padding="10dp"
+            android:background="@null"
+            android:src="@drawable/brain"
+            />
         <ImageButton
             android:id="@+id/information_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left|top"
             android:padding="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="10dp"
             android:src="@drawable/rsz_information_icon"
             />
 

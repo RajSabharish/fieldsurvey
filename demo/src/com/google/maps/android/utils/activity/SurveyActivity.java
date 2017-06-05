@@ -15,7 +15,9 @@ import com.google.maps.android.utils.demo.R;
 
 import org.json.JSONException;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,6 +25,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -31,6 +35,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class SurveyActivity extends BaseDemoActivity {
@@ -39,6 +44,10 @@ public class SurveyActivity extends BaseDemoActivity {
     public static String inspect_id,pit_position;
     public static List<String> pit_ids = new ArrayList<String>();
     public static Boolean copper_eqp_state, fiber_eqp_state, ug_state;
+    private ImageButton btnSpeak;
+    private String Speechvalue;
+    TextToSpeech t1;
+    private final int REQ_CODE_SPEECH_INPUT = 100;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +55,13 @@ public class SurveyActivity extends BaseDemoActivity {
         copper_eqp_state =extras.getBoolean("copperstate");
         fiber_eqp_state =extras.getBoolean("fiberstate");
         ug_state=extras.getBoolean("ugstate");
+        btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
         ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -434,7 +450,76 @@ public class SurveyActivity extends BaseDemoActivity {
         });
 
     }
+    /**
+     * Showing google speech input dialog
+     * */
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+    /**
+     * Receiving speech input
+     * */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    System.out.println(result.get(0)+"text got from speech");
+                    Speechvalue = result.get(0).toString();
+                    if(Speechvalue != null && !Speechvalue.isEmpty()) {
+                        String[] words = Speechvalue.split("\\s");
+                        for(String w:words){
+                            System.out.println(words+"words");
+                            if (w.equals("name"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("My name is Intellegent network field assistant Version 1.0", TextToSpeech.QUEUE_FLUSH, null);
+                                        }
+                                    }
+                                });
+                            }
+                            if (w.equals("designation"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Network field engineer", TextToSpeech.QUEUE_FLUSH, null);
+                                        }
+                                    }
+                                });
+
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+
+        }
+    }
 
 
 }

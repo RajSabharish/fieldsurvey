@@ -6,11 +6,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_2"
     tools:context="com.google.maps.android.utils.activity.SurveyFragment">
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
@@ -23,7 +21,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintVertical_bias="0.369" />
-
         <HorizontalScrollView
             android:layout_width="0dp"
             android:layout_height="354dp"
@@ -36,12 +33,10 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="28dp"
             android:id="@+id/horizontalScrollView">
-
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/constraintLayout">
-
                 <Button
                     android:id="@+id/ugbutton"
                     android:layout_width="175dp"
@@ -82,7 +77,6 @@
                     app:layout_constraintLeft_toRightOf="@+id/aerialbutton"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
-
                 <Button
                     android:id="@+id/aerialbutton"
                     android:layout_width="175dp"
@@ -106,7 +100,6 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
-
                 <Button
                     android:id="@+id/fiberbutton"
                     android:layout_width="175dp"
