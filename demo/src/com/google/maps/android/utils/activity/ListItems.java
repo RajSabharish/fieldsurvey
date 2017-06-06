@@ -8,7 +8,7 @@ import java.util.List;
  */
 
 public class ListItems {
-
+    static List<String> Coordinateslist = new ArrayList<String>();
     static List<String> DuctId = new ArrayList<String>();
     static List<String> CableCount = new ArrayList<String>();
     static List<String> Details = new ArrayList<String>();

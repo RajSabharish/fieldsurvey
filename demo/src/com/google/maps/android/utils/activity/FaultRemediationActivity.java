@@ -30,12 +30,21 @@ import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonPointStyle;
 import com.google.maps.android.utils.demo.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FaultRemediationActivity extends BaseDemoActivity {
+    private String textvalue;
 
+    JSONArray parentArray;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,24 +148,40 @@ public class FaultRemediationActivity extends BaseDemoActivity {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(FaultRemediationActivity.this);
                 alertDialog.setTitle("Locate Cable cut");
                 alertDialog.setMessage("Enter Length");
-
                 final EditText input = new EditText(FaultRemediationActivity.this);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
                 input.setLayoutParams(lp);
                 alertDialog.setView(input);
-
                 alertDialog.setPositiveButton("YES",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                LatLng cut_loc = new LatLng(-37.744164, 144.798607);
-                                Bitmap cut_im = BitmapFactory.decodeResource(getResources(), R.drawable.icon_defects);
-                                getMap().addMarker(new MarkerOptions()
-                                        .position(cut_loc).icon(BitmapDescriptorFactory.fromBitmap(cut_im)).title("Fiber cut location"));
-                                LatLng initial_coordinate = new LatLng(-37.744164, 144.798607);
-                                CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
-                                getMap().animateCamera(initial_location);
+                                textvalue = input.getText().toString();
+                                for (int k = 0; k < ListItems.Coordinateslist.size(); k++) {
+                                    String[] parts = ListItems.Coordinateslist.get(k).split(",");
+                                    String Long2 = parts[0];
+                                    String Lat2 = parts[1];
+                                    String Longitude2 = Long2.replaceAll("[\\[\\]]", "");
+                                    Double nearByLongitude = Double.parseDouble(Longitude2);
+                                    String Latitude2 = Lat2.replaceAll("[\\[\\]]", "");
+                                    Double nearByLatitude = Double.parseDouble(Latitude2);
+                                    System.out.println(nearByLongitude+"fsdfgsd"+nearByLatitude+"camechett");
+                                    float distance = distFrom(nearByLatitude, nearByLongitude);
+                                    Integer distance1 = (int)distance;
+                                    System.out.println(distance1+"distance"+textvalue);
+                                    if (distance1 == Integer.parseInt(textvalue) )
+                                    {
+                                        System.out.println("going inside the loop");
+                                        LatLng cut_loc = new LatLng(nearByLatitude, nearByLongitude);
+                                        Bitmap cut_im = BitmapFactory.decodeResource(getResources(), R.drawable.icon_defects);
+                                        getMap().addMarker(new MarkerOptions()
+                                                .position(cut_loc).icon(BitmapDescriptorFactory.fromBitmap(cut_im)).title("Fiber cut location"));
+                                        LatLng initial_coordinate = new LatLng(nearByLatitude, nearByLongitude);
+                                        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
+                                        getMap().animateCamera(initial_location);
+                                    }
+                                }
                             }
                         });
 
@@ -188,6 +213,26 @@ public class FaultRemediationActivity extends BaseDemoActivity {
             GeoJsonLayer layer_fault_cable = new GeoJsonLayer(getMap(), R.raw.fault_cable, this);
             GeoJsonLayer layer_fault_eqp = new GeoJsonLayer(getMap(), R.raw.fault_equipment, this);
             GeoJsonLayer layer_fault_locids = new GeoJsonLayer(getMap(), R.raw.fault_selected_address, this);
+            BufferedReader jsonReader = new BufferedReader(new InputStreamReader(this.getResources().openRawResource(R.raw.fault_cable)));
+            StringBuilder jsonBuilder = new StringBuilder();
+            for (String line = null; (line = jsonReader.readLine()) != null; ) {
+                jsonBuilder.append(line).append("\n");
+            }
+            JSONTokener tokener = new JSONTokener(jsonBuilder.toString());
+            JSONObject parentObject = new JSONObject(tokener);
+            parentArray = parentObject.getJSONArray("features");
+
+            for (int i = 0; i < parentArray.length(); i++) {
+                JSONObject c = parentArray.getJSONObject(i);
+                JSONObject properties = c.getJSONObject("geometry");
+                String coordinates = properties.getString("coordinates");
+                ListItems.Coordinateslist.add(coordinates);
+
+
+
+               /* Float value = distFrom(-37.743732,144.79243596,-33.8291,151.248);
+                System.out.println(value+"distancefound");*/
+            }
 
             for (GeoJsonFeature feature : layer_fault_cable.getFeatures()) {
                     layer_temp.addFeature(feature);
@@ -207,6 +252,7 @@ public class FaultRemediationActivity extends BaseDemoActivity {
                 {
                     // Toast.makeText(SurveyActivity.this, "Feature clicked: " + feature.getProperty("ID"), Toast.LENGTH_SHORT).show();
                     if(feature.hasProperty("ID")) {
+                        System.out.println(feature.getProperty("coordinates")+"propertygot");
                         if(feature.getProperty("ID").contains("LOC000005005354")||
                                 feature.getProperty("ID").contains("LOC000024269703")||
                                 feature.getProperty("ID").contains("LOC000025168142")||
@@ -219,6 +265,7 @@ public class FaultRemediationActivity extends BaseDemoActivity {
                     }
 
 
+
                 }
 
             });
@@ -229,6 +276,20 @@ public class FaultRemediationActivity extends BaseDemoActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+    public static float distFrom(double lat1, double lng1) {
+        double earthRadius = 6371000; //meters
+        double lat2 = -37.74403296;
+        double lng2 = 144.79875594;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLng = Math.toRadians(lng2 - lng1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        float dist = (float) (earthRadius * c);
+
+        return dist;
     }
 
 }
