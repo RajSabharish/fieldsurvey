@@ -181,6 +181,62 @@ public class FaultRemediationActivity extends BaseDemoActivity {
                                         CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
                                         getMap().animateCamera(initial_location);
                                     }
+                                    if (Integer.parseInt(textvalue) == 20 )
+                                    {
+                                        LatLng cut_loc = new LatLng(-37.74401397, 144.79880292);
+                                        Bitmap cut_im = BitmapFactory.decodeResource(getResources(), R.drawable.icon_defects);
+                                        getMap().addMarker(new MarkerOptions()
+                                                .position(cut_loc).icon(BitmapDescriptorFactory.fromBitmap(cut_im)).title("Fiber cut location"));
+                                        LatLng initial_coordinate = new LatLng(-37.74401397, 144.79880292);
+                                        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
+                                        getMap().animateCamera(initial_location);
+
+                                    }
+                                    if (Integer.parseInt(textvalue) == 30 )
+                                    {
+                                        LatLng cut_loc = new LatLng(-37.74423096,144.79878294);
+                                        Bitmap cut_im = BitmapFactory.decodeResource(getResources(), R.drawable.icon_defects);
+                                        getMap().addMarker(new MarkerOptions()
+                                                .position(cut_loc).icon(BitmapDescriptorFactory.fromBitmap(cut_im)).title("Fiber cut location"));
+                                        LatLng initial_coordinate = new LatLng(-37.74423096,144.79878294);
+                                        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
+                                        getMap().animateCamera(initial_location);
+
+                                    }
+                                    if (Integer.parseInt(textvalue) == 40 )
+                                    {
+                                        LatLng cut_loc = new LatLng(-37.74420603,144.79878096);
+                                        Bitmap cut_im = BitmapFactory.decodeResource(getResources(), R.drawable.icon_defects);
+                                        getMap().addMarker(new MarkerOptions()
+                                                .position(cut_loc).icon(BitmapDescriptorFactory.fromBitmap(cut_im)).title("Fiber cut location"));
+                                        LatLng initial_coordinate = new LatLng(-37.74420603,144.79878096);
+                                        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
+                                        getMap().animateCamera(initial_location);
+
+                                    }
+                                    if (Integer.parseInt(textvalue) == 50 )
+                                    {
+                                        LatLng cut_loc = new LatLng(-37.74421701,144.79885602);
+                                        Bitmap cut_im = BitmapFactory.decodeResource(getResources(), R.drawable.icon_defects);
+                                        getMap().addMarker(new MarkerOptions()
+                                                .position(cut_loc).icon(BitmapDescriptorFactory.fromBitmap(cut_im)).title("Fiber cut location"));
+                                        LatLng initial_coordinate = new LatLng(-37.74421701,144.79885602);
+                                        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
+                                        getMap().animateCamera(initial_location);
+
+                                    }
+
+                                    if (Integer.parseInt(textvalue) == 77 )
+                                    {
+                                        LatLng cut_loc = new LatLng( -37.74403296,144.79875594);
+                                        Bitmap cut_im = BitmapFactory.decodeResource(getResources(), R.drawable.icon_defects);
+                                        getMap().addMarker(new MarkerOptions()
+                                                .position(cut_loc).icon(BitmapDescriptorFactory.fromBitmap(cut_im)).title("Fiber cut location"));
+                                        LatLng initial_coordinate = new LatLng(-37.74403296,144.79875594);
+                                        CameraUpdate initial_location = CameraUpdateFactory.newLatLngZoom(initial_coordinate,35);
+                                        getMap().animateCamera(initial_location);
+
+                                    }
                                 }
                             }
                         });
