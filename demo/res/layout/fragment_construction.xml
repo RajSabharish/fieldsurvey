@@ -66,12 +66,26 @@
             android:layout_height="93dp"
             app:srcCompat="@drawable/infalogo"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="44dp"
+            android:layout_marginBottom="114dp"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.962" />
+            app:layout_constraintHorizontal_bias="0.97" />
+
+        <ImageButton
+            android:id="@+id/nlpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:src="@drawable/brain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/construction_submitbtn"
+            app:layout_constraintVertical_bias="0.44" />
     </android.support.constraint.ConstraintLayout>
 
 </RelativeLayout>

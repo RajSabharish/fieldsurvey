@@ -186,7 +186,7 @@ public class CaptureImagePit extends AppCompatActivity {
                                     public void onInit(int status) {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
-                                            t1.speak("My name is Intellegent network field assistant Version 1.0", TextToSpeech.QUEUE_FLUSH, null);
+                                            t1.speak("My name is Intelligent network field assistant Version 1.0", TextToSpeech.QUEUE_FLUSH, null);
                                         }
                                     }
                                 });

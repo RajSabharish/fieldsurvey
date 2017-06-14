@@ -499,6 +499,36 @@ public class SurveyActivity extends BaseDemoActivity {
                                     }
                                 });
                             }
+                            if (w.equals("call"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Calling the designer for this area", TextToSpeech.QUEUE_FLUSH, null);
+                                            Intent intent = new Intent(Intent.ACTION_CALL);
+                                            intent.setData(Uri.parse("tel:" + "8489733394"));
+                                            SurveyActivity.this.startActivity(intent);
+                                        }
+                                    }
+                                });
+                            }
+                            if (w.equals("message"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Type the message you would like to send", TextToSpeech.QUEUE_FLUSH, null);
+                                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + "8489733394"));
+                                            intent.putExtra("sms_body", "Hi");
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+                            }
                             if (w.equals("designation"))
                             {
                                 t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
