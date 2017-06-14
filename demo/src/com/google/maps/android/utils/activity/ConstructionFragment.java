@@ -2,6 +2,7 @@ package com.google.maps.android.utils.activity;
 
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.maps.android.utils.demo.R;
 
@@ -43,6 +45,14 @@ public class ConstructionFragment extends Fragment {
 
         Button SurveyButton = (Button) view.findViewById(R.id.construction_submitbtn);
         SamCode = (EditText) view.findViewById(R.id.construction_samcodetext);
+        btnSpeak = (ImageButton)view.findViewById(R.id.nlpButton);
+
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
 
         SurveyButton.setOnClickListener(new View.OnClickListener() {
 
@@ -66,6 +76,23 @@ public class ConstructionFragment extends Fragment {
         return view;
     }
 
+    public void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getActivity(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -124,6 +151,11 @@ public class ConstructionFragment extends Fragment {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Copper Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
                                             Intent intent = new Intent(getActivity(), SurveyActivity.class);
                                             Bundle extras = new Bundle();
                                             extras.putBoolean("ugstate", false);
