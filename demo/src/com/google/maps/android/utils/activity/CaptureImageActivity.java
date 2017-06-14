@@ -93,24 +93,7 @@ public class CaptureImageActivity extends Activity {
         return ItemList.imageItem1;
     }
 
-    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
-    {
-        @Override
-        public void onClick(DialogInterface dialog, int which)
-        {
-            switch (which)
-            {
-                case DialogInterface.BUTTON_POSITIVE:
-                    Intent i = new Intent(CaptureImageActivity.this, AlternateDucts.class);
-                    i.putExtra("id_key",DuctId);
-                    startActivity(i);
-                    break;
-                case DialogInterface.BUTTON_NEGATIVE:
-                    break;
 
-            }
-        }
-    };
     DialogInterface.OnClickListener dialogClickListener1 = new DialogInterface.OnClickListener()
     {
         @Override
@@ -149,17 +132,33 @@ public class CaptureImageActivity extends Activity {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     System.out.println(result.get(0)+"text got from speech");
                     Speechvalue = result.get(0).toString();
-                    Speack();
                     if(Speechvalue != null && !Speechvalue.isEmpty()) {
                         String[] words = Speechvalue.split("\\s");
                         for(String w:words){
                             System.out.println(words+"words");
                             if (w.equals("alternate"))
                             {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImageActivity.this);
-                                alert.setTitle("Camera Upload");
-                                alert.setMessage("Images Uploaded! Do you want to see the alternate Ducts").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Here are the Alternate Ducts for which you have been looking for!", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent i = new Intent(CaptureImageActivity.this, AlternateDucts.class);
+                                            i.putExtra("id_key",DuctId);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+
                             }
+
                             if (w.equals("name"))
                             {
                                 t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -172,6 +171,7 @@ public class CaptureImageActivity extends Activity {
                                     }
                                 });
                             }
+
                             if (w.equals("designation"))
                             {
                                 t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -180,6 +180,26 @@ public class CaptureImageActivity extends Activity {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Network field engineer", TextToSpeech.QUEUE_FLUSH, null);
+                                        }
+                                    }
+                                });
+
+                            }
+                            if (w.equals("work"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Here are the work orders for which you have been assigned!", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent i = new Intent(CaptureImageActivity.this, MyJob.class);
+                                            startActivity(i);
                                         }
                                     }
                                 });
@@ -219,16 +239,5 @@ public class CaptureImageActivity extends Activity {
         }
         super.onPause();
     }
-    public void Speack()
-    {
-        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.UK);
-                    t1.speak("Do you want to see the alternate Ducts", TextToSpeech.QUEUE_FLUSH, null);
-                }
-            }
-        });
-    }
+
 }

@@ -107,11 +107,7 @@ public class ConstructionFragment extends Fragment {
                     if(Speechvalue != null && !Speechvalue.isEmpty()) {
                         String[] words = Speechvalue.split("\\s");
                         for(String w:words){
-                            System.out.println(words+"words");
-                            if (w.equals("alternate"))
-                            {
-
-                            }
+                            System.out.println(w+"words");
                             if (w.equals("name"))
                             {
                                 t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
@@ -123,6 +119,48 @@ public class ConstructionFragment extends Fragment {
                                         }
                                     }
                                 });
+                            }
+                            if (w.equals("work"))
+                            {
+
+                                t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Here are the work orders for which you have been assigned!", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent i = new Intent(getActivity(), MyJob.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+
+                            }
+                            if (w.equals("assets"))
+                            {
+
+                                t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Here are the Assets for which you have been looking for!", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent i = new Intent(getActivity(), BookAssetsActivity.class);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+
                             }
                             if (w.equals("fibre"))
                             {

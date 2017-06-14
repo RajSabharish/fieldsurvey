@@ -97,25 +97,7 @@ public class CaptureImagePit extends AppCompatActivity {
         ItemList.imageItems1.clear();
         return ItemList.imageItem2;
     }
-    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
-    {
-        @Override
-        public void onClick(DialogInterface dialog, int which)
-        {
-            switch (which)
-            {
-                case DialogInterface.BUTTON_POSITIVE:
-                    Intent i = new Intent(CaptureImagePit.this, AlternatePits.class);
-                    i.putExtra("pitId",pitId);
-                    i.putExtra("pit_position",pit_position);
-                    startActivity(i);
-                    break;
-                case DialogInterface.BUTTON_NEGATIVE:
-                    break;
 
-            }
-        }
-    };
     DialogInterface.OnClickListener dialogClickListener1 = new DialogInterface.OnClickListener()
     {
         @Override
@@ -168,16 +150,32 @@ public class CaptureImagePit extends AppCompatActivity {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     System.out.println(result.get(0)+"text got from speech");
                     Speechvalue = result.get(0).toString();
-                    Speack();
                     if(Speechvalue != null && !Speechvalue.isEmpty()) {
                         String[] words = Speechvalue.split("\\s");
                         for(String w:words){
-                            System.out.println(words+"words");
+                            System.out.println(w+"words");
                             if (w.equals("alternate"))
                             {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImagePit.this);
-                                alert.setTitle("Camera Upload");
-                                alert.setMessage("Images Uploaded! Do you want to see the alternate pits").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Here are the Alternate pits for which you have been looking for!", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent i = new Intent(CaptureImagePit.this, AlternatePits.class);
+                                            i.putExtra("pitId",pitId);
+                                            i.putExtra("pit_position",pit_position);
+                                            startActivity(i);
+                                        }
+                                    }
+                                });
+
                             }
                             if (w.equals("name"))
                             {
@@ -199,6 +197,27 @@ public class CaptureImagePit extends AppCompatActivity {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Network field engineer", TextToSpeech.QUEUE_FLUSH, null);
+                                        }
+                                    }
+                                });
+
+                            }
+                            if (w.equals("work"))
+                            {
+
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Here are the work orders for which you have been assigned!", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent i = new Intent(CaptureImagePit.this, MyJob.class);
+                                            startActivity(i);
                                         }
                                     }
                                 });
@@ -228,17 +247,5 @@ public class CaptureImagePit extends AppCompatActivity {
             t1.shutdown();
         }
         super.onPause();
-    }
-    public void Speack()
-    {
-        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.UK);
-                    t1.speak("Do you want to see the alternate pits", TextToSpeech.QUEUE_FLUSH, null);
-                }
-            }
-        });
     }
 }
