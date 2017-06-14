@@ -46,7 +46,7 @@
             android:src="@drawable/rsz_information_icon"
             />
         <ImageButton
-            android:id="@+id/btnSpeak"
+            android:id="@+id/nlpButton"
             android:layout_gravity="left|top"
             android:layout_width="40dp"
             android:layout_height="40dp"
