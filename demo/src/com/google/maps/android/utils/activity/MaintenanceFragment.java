@@ -192,6 +192,11 @@ public class MaintenanceFragment extends Fragment {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Fiber Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
                                             Intent intent = new Intent(getActivity(), SurveyActivity.class);
                                             Bundle extras = new Bundle();
                                             extras.putBoolean("ugstate", false);
@@ -211,6 +216,11 @@ public class MaintenanceFragment extends Fragment {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Copper Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
                                             Intent intent = new Intent(getActivity(), SurveyActivity.class);
                                             Bundle extras = new Bundle();
                                             extras.putBoolean("ugstate", false);
@@ -230,6 +240,11 @@ public class MaintenanceFragment extends Fragment {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Underground Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
                                             Intent intent = new Intent(getActivity(), SurveyActivity.class);
                                             Bundle extras = new Bundle();
                                             extras.putBoolean("ugstate", true);
@@ -254,19 +269,6 @@ public class MaintenanceFragment extends Fragment {
                                 });
 
                             }
-                            if (w.equals("designation"))
-                            {
-                                t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
-                                    @Override
-                                    public void onInit(int status) {
-                                        if (status != TextToSpeech.ERROR) {
-                                            t1.setLanguage(Locale.UK);
-                                            t1.speak("Network field engineer", TextToSpeech.QUEUE_FLUSH, null);
-                                        }
-                                    }
-                                });
-
-                            }
                             if (w.equals("construction"))
                             {
                                 t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
@@ -275,6 +277,11 @@ public class MaintenanceFragment extends Fragment {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Construction view for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
                                             Intent myIntent = new Intent(getActivity(), ConstructionActivity.class);
                                             getActivity().startActivity(myIntent);
                                         }
@@ -290,6 +297,11 @@ public class MaintenanceFragment extends Fragment {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Upkeep for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
                                             Intent intent = new Intent(getActivity(), EquipmentUpkeep.class);
                                             startActivity(intent);
                                         }
@@ -305,6 +317,11 @@ public class MaintenanceFragment extends Fragment {
                                         if (status != TextToSpeech.ERROR) {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Fault remediation for 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(5000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
                                             Intent intent = new Intent(getActivity(), FaultRemediationActivity.class);
                                             startActivity(intent);
                                         }
