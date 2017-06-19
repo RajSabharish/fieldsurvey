@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
@@ -354,7 +355,7 @@ public class ConstructionActivity extends BaseDemoActivity {
                     if(Speechvalue != null && !Speechvalue.isEmpty()) {
                         String[] words = Speechvalue.split("\\s");
                         for(String w:words){
-                            System.out.println(words+"words");
+                            System.out.println(w+"words");
                             if (w.equals("name"))
                             {
                                 t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -376,7 +377,7 @@ public class ConstructionActivity extends BaseDemoActivity {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Calling the designer for this area", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -396,7 +397,7 @@ public class ConstructionActivity extends BaseDemoActivity {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Type the message you would like to send", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -419,6 +420,118 @@ public class ConstructionActivity extends BaseDemoActivity {
                                     }
                                 });
 
+                            }
+                            if (w.equals("underground")||w.equals("UG")||w.equals("under")||w.equals("ground"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Underground Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent intent = new Intent(getApplicationContext(), SurveyActivity.class);
+                                            Bundle extras = new Bundle();
+                                            extras.putBoolean("ugstate", true);
+                                            extras.putBoolean("fiberstate", false);
+                                            extras.putBoolean("copperstate", false);
+                                            intent.putExtras(extras);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+                            }
+                            if (w.equals("fault")||w.equals("remediation"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Fault remediation for 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent intent = new Intent(getApplicationContext(), FaultRemediationActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+
+                            }
+                            if (w.equals("fibre"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Fiber Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent intent = new Intent(getApplicationContext(), SurveyActivity.class);
+                                            Bundle extras = new Bundle();
+                                            extras.putBoolean("ugstate", false);
+                                            extras.putBoolean("fiberstate", true);
+                                            extras.putBoolean("copperstate", false);
+                                            intent.putExtras(extras);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+                            }
+                            if (w.equals("upkeep")||w.equals("maintenance"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Upkeep for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent intent = new Intent(getApplicationContext(), EquipmentUpkeep.class);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+
+                            }
+                            if (w.equals("copper")||w.equals("Copper"))
+                            {
+                                t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                    @Override
+                                    public void onInit(int status) {
+                                        if (status != TextToSpeech.ERROR) {
+                                            t1.setLanguage(Locale.UK);
+                                            t1.speak("Copper Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
+                                            try {
+                                                Thread.sleep(4000);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            Intent intent = new Intent(getApplicationContext(), SurveyActivity.class);
+                                            Bundle extras = new Bundle();
+                                            extras.putBoolean("ugstate", false);
+                                            extras.putBoolean("fiberstate", false);
+                                            extras.putBoolean("copperstate", true);
+                                            intent.putExtras(extras);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
                             }
                         }
                     }

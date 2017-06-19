@@ -273,10 +273,6 @@ public class SurveyFragment extends Fragment {
                         String[] words = Speechvalue.split("\\s");
                         for(String w:words){
                             System.out.println(words+"words");
-                            if (w.equals("alternate"))
-                            {
-
-                            }
                             if (w.equals("name"))
                             {
                                 t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
@@ -298,7 +294,7 @@ public class SurveyFragment extends Fragment {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Fiber Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -322,7 +318,7 @@ public class SurveyFragment extends Fragment {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Copper Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -346,7 +342,7 @@ public class SurveyFragment extends Fragment {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Underground Survey for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -383,7 +379,7 @@ public class SurveyFragment extends Fragment {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Construction view for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -403,7 +399,7 @@ public class SurveyFragment extends Fragment {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Upkeep for area 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -423,7 +419,7 @@ public class SurveyFragment extends Fragment {
                                             t1.setLanguage(Locale.UK);
                                             t1.speak("Fault remediation for 3KGP-01", TextToSpeech.QUEUE_FLUSH, null);
                                             try {
-                                                Thread.sleep(5000);
+                                                Thread.sleep(4000);
                                             } catch (InterruptedException e) {
                                                 e.printStackTrace();
                                             }
@@ -448,18 +444,6 @@ public class SurveyFragment extends Fragment {
             t1.shutdown();
         }
         super.onPause();
-    }
-    public void Speack()
-    {
-        t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.UK);
-                    t1.speak("Do you want to see the alternate pits", TextToSpeech.QUEUE_FLUSH, null);
-                }
-            }
-        });
     }
 }
 
