@@ -533,6 +533,7 @@ public class ConstructionActivity extends BaseDemoActivity {
                                     }
                                 });
                             }
+
                         }
                     }
                 }

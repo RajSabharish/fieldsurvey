@@ -46,7 +46,7 @@ public class SurveyFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_survey, container, false);
@@ -69,8 +69,8 @@ public class SurveyFragment extends Fragment {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("AERIAL SURVEY");
                 alertDialog.setMessage("Enter Area Code");
-
                 final EditText input = new EditText(getActivity());
+                input.setText("3KGP-01");
                 input.setMaxLines(1);
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -109,6 +109,7 @@ public class SurveyFragment extends Fragment {
                 alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
+                input.setText("3KGP-01");
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
@@ -152,8 +153,8 @@ public class SurveyFragment extends Fragment {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                 alertDialog.setTitle("COPPER EQUIPMENT SURVEY");
                 alertDialog.setMessage("Enter Area Code");
-
                 final EditText input = new EditText(getActivity());
+                input.setText("3KGP-01");
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
@@ -199,6 +200,7 @@ public class SurveyFragment extends Fragment {
                 alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
+                input.setText("3KGP-01");
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);

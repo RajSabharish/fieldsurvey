@@ -61,6 +61,7 @@ public class MaintenanceFragment extends Fragment {
                 alertDialog.setTitle("Equipement Upkeep");
                 alertDialog.setMessage("Enter Area Code");
                 final EditText input = new EditText(getActivity());
+                input.setText("3KGP-01");
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
@@ -100,6 +101,7 @@ public class MaintenanceFragment extends Fragment {
                 alertDialog.setMessage("Enter Area Code");
 
                 final EditText input = new EditText(getActivity());
+                input.setText("3KGP-01");
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
