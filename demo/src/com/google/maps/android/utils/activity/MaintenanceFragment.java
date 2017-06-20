@@ -169,11 +169,7 @@ public class MaintenanceFragment extends Fragment {
                     if(Speechvalue != null && !Speechvalue.isEmpty()) {
                         String[] words = Speechvalue.split("\\s");
                         for(String w:words){
-                            System.out.println(words+"words");
-                            if (w.equals("alternate"))
-                            {
-
-                            }
+                            System.out.println(w+"words");
                             if (w.equals("name"))
                             {
                                 t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
@@ -210,7 +206,7 @@ public class MaintenanceFragment extends Fragment {
                                     }
                                 });
                             }
-                            if (w.equals("copper"))
+                            if (w.equals("copper")||w.equals("Copper"))
                             {
                                 t1 = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                     @Override

@@ -47,6 +47,14 @@ public class CaptureImagePit extends AppCompatActivity {
         pitId = bundle.getString("pitid");
         pit_position = bundle.getString("pitposition");
         selectedValue = bundle.getString("selectedRadioIdText");
+        ImageButton home_button = (ImageButton) findViewById(R.id.home_button);
+        home_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIntent_book = new Intent(CaptureImagePit.this,MainActivity.class);
+                startActivity(newIntent_book);
+            }
+        });
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
         btnSpeak.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +90,8 @@ public class CaptureImagePit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(CaptureImagePit.this);
-                alert.setTitle("Camera Upload");
-                alert.setMessage("Image Uploaded ! You may close the application");
+                alert.setTitle("Image Analysis");
+                alert.setMessage("Images Uploaded!\nProposed Equipment: Fiber Splice \nResults: UN-FIT for installation");
                 alert.setPositiveButton("OK",null);
                 alert.show();
             }
