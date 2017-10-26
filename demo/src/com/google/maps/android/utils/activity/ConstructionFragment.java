@@ -43,8 +43,9 @@ public class ConstructionFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_construction, container, false);
 
-        Button SurveyButton = (Button) view.findViewById(R.id.construction_submitbtn);
-        SamCode = (EditText) view.findViewById(R.id.construction_samcodetext);
+        ImageButton ConstructionButton = (ImageButton) view.findViewById(R.id.construction_img_button);
+        ImageButton ViewDesignButton = (ImageButton) view.findViewById(R.id.view_design_img_button);
+       // SamCode = (EditText) view.findViewById(R.id.construction_samcodetext);
         btnSpeak = (ImageButton)view.findViewById(R.id.nlpButton);
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +55,7 @@ public class ConstructionFragment extends Fragment {
             }
         });
 
-        SurveyButton.setOnClickListener(new View.OnClickListener() {
+     /*   SurveyButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -72,7 +73,31 @@ public class ConstructionFragment extends Fragment {
                     }
 
             }
+        }); */
+
+        ConstructionButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                    Intent myIntent = new Intent(getActivity(), ConstructionActivity.class);
+                    getActivity().startActivity(myIntent);
+
+            }
         });
+
+        ViewDesignButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent myIntent = new Intent(getActivity(), ImageListActivity.class);
+                getActivity().startActivity(myIntent);
+
+            }
+        });
+
+
         return view;
     }
 

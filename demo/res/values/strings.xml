@@ -40,6 +40,7 @@
     <string name="title_jobs">My Jobs</string>
     <string name="title_incidents">Raise Incident</string>
     <string name="title_assets">Book Assets</string>
+    <string name="title_activity_image_list">ImageListActivity</string>
 
 
 </resources>

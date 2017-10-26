@@ -70,7 +70,11 @@
         <activity android:name="com.google.maps.android.utils.activity.RaiseTicketActivity" />
         <activity android:name="com.google.maps.android.utils.activity.RaiseAssetIncidentActivity" />
         <activity android:name="com.google.maps.android.utils.activity.BookAssetsActivity" />
-        <activity android:name="com.google.maps.android.utils.activity.MyJob"></activity>
+        <activity android:name="com.google.maps.android.utils.activity.MyJob" />
+        <activity
+            android:name="com.google.maps.android.utils.activity.ImageListActivity"
+            android:label="@string/title_activity_image_list"
+            android:theme="@style/MyMaterialTheme.Base"></activity>
     </application>
 
 </manifest>

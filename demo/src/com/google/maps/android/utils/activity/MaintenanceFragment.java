@@ -44,8 +44,8 @@ public class MaintenanceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_maintenance, container, false);
-        ImageButton fault_button = (ImageButton) view.findViewById(R.id.fault_remediation_img_button);
-        ImageButton upkeep_button = (ImageButton) view.findViewById(R.id.eqp_upkeep_img_button);
+        ImageButton fault_button = (ImageButton) view.findViewById(R.id.construction_img_button);
+        ImageButton upkeep_button = (ImageButton) view.findViewById(R.id.view_design_img_button);
         btnSpeak = (ImageButton)view.findViewById(R.id.nlpButton);
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
