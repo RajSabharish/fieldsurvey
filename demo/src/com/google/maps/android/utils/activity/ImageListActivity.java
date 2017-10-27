@@ -1,7 +1,9 @@
 package com.google.maps.android.utils.activity;
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,8 +29,22 @@ import java.util.TreeSet;
 
 public class ImageListActivity extends AppCompatActivity {
 
+    public static boolean openApp(Context context, String packageName) {
+        PackageManager manager = context.getPackageManager();
+        Intent i = manager.getLaunchIntentForPackage(packageName);
+        if (i == null) {
+            return false;
+            //throw new PackageManager.NameNotFoundException();
+        }
+        i.addCategory(Intent.CATEGORY_LAUNCHER);
+        context.startActivity(i);
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -55,24 +71,37 @@ public class ImageListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                openApp(ImageListActivity.this, "com.digitalruby.youdoodle");
+
+                /*
+
+                PackageManager pm = ImageListActivity.this.getPackageManager();
+                Intent appStartIntent = pm.getLaunchIntentForPackage("com.digitalruby.youdoodle&hl=en");
+                System.out.println(appStartIntent);
+                if (null != appStartIntent)
+                {
+                    ImageListActivity.this.startActivity(appStartIntent);
+                }
+                */
+                /*
+
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.setComponent(ComponentName.unflattenFromString("com.digitalruby.youdoodle&hl=en"));
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 startActivity(intent);
-
+                */
             }
         });
+
 
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.setComponent(ComponentName.unflattenFromString("com.digitalruby.youdoodle&hl=en"));
-                intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                startActivity(intent);
-
+                Intent myIntent = new Intent(ImageListActivity.this, RaiseAssetIncidentActivity.class);
+                startActivity(myIntent);
+                finish();
             }
         });
     }
