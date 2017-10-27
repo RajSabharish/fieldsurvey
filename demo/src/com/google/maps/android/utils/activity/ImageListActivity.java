@@ -67,9 +67,12 @@ public class ImageListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent newIntent_book = new Intent(ImageListActivity.this,MainActivity.class);
-                startActivity(newIntent_book);
-                finish();
+
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setComponent(ComponentName.unflattenFromString("com.digitalruby.youdoodle&hl=en"));
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                startActivity(intent);
+
             }
         });
     }
