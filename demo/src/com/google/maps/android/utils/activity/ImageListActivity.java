@@ -99,7 +99,7 @@ public class ImageListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent myIntent = new Intent(ImageListActivity.this, RaiseAssetIncidentActivity.class);
+                Intent myIntent = new Intent(ImageListActivity.this, MainActivity.class);
                 startActivity(myIntent);
                 finish();
             }
