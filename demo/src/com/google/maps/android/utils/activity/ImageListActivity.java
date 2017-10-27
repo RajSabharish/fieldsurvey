@@ -1,5 +1,7 @@
 package com.google.maps.android.utils.activity;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.maps.android.utils.demo.R;
@@ -43,6 +46,32 @@ public class ImageListActivity extends AppCompatActivity {
             ImageView myImage = (ImageView) findViewById(R.id.imageView);
             myImage.setImageBitmap(myBitmap);
         }
+
+        Button editButton = (Button) findViewById(R.id.editbutton);
+        Button saveButton = (Button) findViewById(R.id.savebutton);
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setComponent(ComponentName.unflattenFromString("com.digitalruby.youdoodle&hl=en"));
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                startActivity(intent);
+
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent newIntent_book = new Intent(ImageListActivity.this,MainActivity.class);
+                startActivity(newIntent_book);
+                finish();
+            }
+        });
     }
     public ArrayList<String> getFilePaths()
     {
