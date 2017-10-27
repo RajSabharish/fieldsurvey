@@ -32,7 +32,9 @@ import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
 
-
+/*
+This fragment will be used by the construction activity for displaying the map view on the construction layout
+*/
 public class ConstructionFragment extends Fragment {
     EditText SamCode;
     private ImageButton btnSpeak;

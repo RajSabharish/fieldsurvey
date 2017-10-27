@@ -1,7 +1,7 @@
 package com.google.maps.android.utils.model;
 
 /**
- * Created by varada.vamsi on 6/1/2017.
+ * Created by varada.vamsi on 10/27/2017.
  */
 
 public class MyJobClass {

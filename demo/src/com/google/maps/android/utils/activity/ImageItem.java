@@ -1,7 +1,7 @@
 package com.google.maps.android.utils.activity;
 
 /**
- * Created by varada.vamsi on 5/29/2017.
+ * Created by varada.vamsi on 10/27/2017.
  */
 import android.graphics.Bitmap;
 

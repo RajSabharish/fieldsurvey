@@ -29,6 +29,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/*
+This activity records the data coming the IOT devices which are installed in the field and helps it showing the android mobile
+*/
+
 public class EquipmentUpkeep extends BaseDemoActivity {
     private String textvalue;
     private ImageButton btnSpeak;

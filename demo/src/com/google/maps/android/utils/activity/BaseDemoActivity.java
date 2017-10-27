@@ -32,7 +32,11 @@ import com.google.maps.android.utils.demo.R;
 
 import android.Manifest;
 /**
- * Modified by varada.vamsi on 19/5/2017.
+ * Created by Raj.a.natarajan on 10/26/2017
+ * Modified by varada.vamsi on 10/27/2017.
+ */
+/**
+ * This class creates a Map view and helps in pointing out the pointers based on their geojson coordinates
  */
 
 public abstract class BaseDemoActivity extends FragmentActivity implements OnMapReadyCallback,

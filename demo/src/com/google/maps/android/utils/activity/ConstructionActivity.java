@@ -32,6 +32,9 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
+/*
+here we are showing the total construction field network data on the screen which will be used for construction in the field
+*/
 
 public class ConstructionActivity extends BaseDemoActivity {
     private ImageButton btnSpeak;

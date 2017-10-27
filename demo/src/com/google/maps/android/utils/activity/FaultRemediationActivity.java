@@ -45,7 +45,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
+/*
+This helps in finding out fiber cuts and making the remidaiation person go to that particular location
+*/
 public class FaultRemediationActivity extends BaseDemoActivity {
     private String textvalue;
     private ImageButton btnSpeak;

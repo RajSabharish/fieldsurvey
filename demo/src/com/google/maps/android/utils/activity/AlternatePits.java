@@ -25,9 +25,11 @@ import com.google.maps.android.utils.demo.R;
 
 import android.content.Context;
 /**
- * Created by varada.vamsi on 19/5/2017.
+ * Created by varada.vamsi on 10/26/2017.
  */
-
+/*
+This helps in finding out the alernate Pits which are in the buffer of 50mts using taversine algorithm
+*/
 public class AlternatePits extends BaseDemoActivity {
     private TextView mTextView;
     private final static String mLogTag = "AlterPits";

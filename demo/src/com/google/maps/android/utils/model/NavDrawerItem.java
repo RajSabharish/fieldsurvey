@@ -1,7 +1,7 @@
 package com.google.maps.android.utils.model;
 
 /**
- * Created by raj.a.natarajan on 5/26/2017.
+ * Created by raj.a.natarajan on 10/27/2017.
  */
 
 public class NavDrawerItem {

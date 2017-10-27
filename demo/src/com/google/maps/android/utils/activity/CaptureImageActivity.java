@@ -22,7 +22,9 @@ import com.google.maps.android.utils.demo.R;
 
 import java.util.ArrayList;
 import java.util.Locale;
-
+/*
+This activity we are using to capture the images and display them on the screen using camera intent
+*/
 public class CaptureImageActivity extends Activity {
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;

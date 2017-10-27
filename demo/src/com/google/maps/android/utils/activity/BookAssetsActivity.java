@@ -22,6 +22,13 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import com.google.maps.android.utils.demo.R;
 
+/**
+ * Created by raj.a.natarajan on 10/27/2017.
+ */
+/*
+  In this class we are using material layout to display "SURVEY", "CONSTRUCTION", "MAINTENANCE" functionalities
+*/
+
 public class BookAssetsActivity extends Activity {
     private Spinner stageSpinner;
     private static final String[]stages = {"SURVEY", "CONSTRUCTION", "MAINTENANCE"};

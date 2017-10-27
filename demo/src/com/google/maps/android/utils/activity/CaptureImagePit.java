@@ -25,8 +25,11 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- * Created by varada.vamsi on 19/5/2017.
+ * Created by varada.vamsi on 26/10/2017.
  */
+/*
+This activity we are using to capture the images using camera intent and display them on the screen after storing them on memory
+*/
 public class CaptureImagePit extends AppCompatActivity {
     public static String pitId,pit_position,selectedValue;
     private static final int CAMERA_REQUEST = 1888;

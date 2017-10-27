@@ -36,7 +36,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
+/*
+This helps the surveyor by showing the aerial underground fiber and copper layout
+*/
 
 public class SurveyActivity extends BaseDemoActivity {
 

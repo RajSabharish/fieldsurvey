@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import java.util.ArrayList;
 
 /**
- * Created by varada.vamsi on 5/29/2017.
+ * Created by varada.vamsi on 10/26/2017.
  */
 
 public class ItemList {

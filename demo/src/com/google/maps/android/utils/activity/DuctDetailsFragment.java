@@ -27,6 +27,9 @@ import java.util.List;
 /**
  * Created by raj.a.natarajan on 5/4/2017.
  */
+/*
+This activity creates a form which must be filled by the network field surveyor while surveying the field
+*/
 
 public class DuctDetailsFragment extends Fragment{
     final static String ARG_POSITION = "position";

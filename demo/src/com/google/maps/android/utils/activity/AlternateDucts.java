@@ -19,6 +19,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by varada.vamsi on 10/26/2017.
+ */
+
+/*
+This helps in finding out the alernate pits  which are based on the certain properties
+*/
 public class AlternateDucts extends BaseDemoActivity {
     private final static String mLogTag = "ShowList";
     public static String trench_id,current_pits_Utilization,currentduct_size;
@@ -55,14 +62,11 @@ public class AlternateDucts extends BaseDemoActivity {
     }
 
     public void FindTrench(final GeoJsonLayer layer, String id) {
-        System.out.println(id + "idcamefinally");
         for (GeoJsonFeature feature : layer.getFeatures()) {
             if (id.equals(feature.getProperty("ID"))) {
-                System.out.println("inside the loop");
                 trench_id = feature.getProperty("TRENCH_ID");
                 currentduct_size = feature.getProperty("SIZE");
                 current_pits_Utilization = feature.getProperty("PERCENTAGE_FULL");
-                System.out.println(trench_id + "trench_idcame");
                 alternate_ducts(layer, trench_id, id);
             } /*else {
                 Toast.makeText(AlternateDucts.this, "Alternative Pit id not found", Toast.LENGTH_SHORT).show();

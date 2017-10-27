@@ -21,7 +21,9 @@ import com.google.maps.android.utils.demo.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+This is the main activity which connects all the other activities for connecting
+*/
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
 
     private Toolbar toolbar;
