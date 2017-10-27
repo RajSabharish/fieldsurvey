@@ -38,7 +38,7 @@ public class ImageListActivity extends AppCompatActivity {
 
         List vamsi = getFilePaths();
         System.out.println("vamsi"+vamsi);
-        File imgFile = new  File("/storage/emulated/0/DCIM/Camera/Test.jpg");
+        File imgFile = new  File("/storage/emulated/0/DCIM/Pdfimage.jpg");
         System.out.println("imgFile ######## imgFile"+imgFile);
         if(imgFile.exists()){
             System.out.println("inside the if condition");
